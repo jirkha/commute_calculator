@@ -1,8 +1,9 @@
 "use client";
 import React, {useContext, useState} from "react";
-import { Autocomplete, useJsApiLoader } from "@react-google-maps/api";
+import { Autocomplete } from "@react-google-maps/api";
 import Input from "./Input";
-import { CounterContext } from "../sections/CommuteCounter";
+import { CounterContext } from "../contexts/CounterContext";
+import GoogleMapsLoader from "../utils/GoogleMapsLoader";
 
 interface InputGoogleProps {
   id: number;
@@ -13,37 +14,12 @@ interface InputGoogleProps {
 }
 
 export default function InputGoogle(props: InputGoogleProps) {
-    
-    //const libraries: UseLoadScriptOptions = ["places"];
-    const [libraries]:any = useState(["places"]);
-    const { isLoaded } = useJsApiLoader({
-      //googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-      googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-      id: "google-map-script",
-      libraries,
-    });
 
     const [inputValue, setInputValue] = useState("");
-    const [autocomplete, setAutocomplete] = useState(null);
+    const [autocomplete, setAutocomplete] = useState<google.maps.places.Autocomplete | null>(null);
     const { formData, setFormData } = useContext(CounterContext);
 
-
-      if (!isLoaded) {
-        return <h3>Prostředí Google API se načítá</h3>;
-      }
-
-    // async function googlePlaces() {
-    //   const googlePlace = new google.maps.DirectionsService()
-    //   console.log("currentResidence", currentResidence);
-    //   const results = await googlePlace.route({
-    //     origin: currentResidence,
-    //     destination: plannedResidence,
-    //     travelMode: google.maps.TravelMode.TRANSIT
-    // });
-    //   console.log("results",results)
-    // } 
-
-  const handleAutocompleteLoad = (
+    const handleAutocompleteLoad = (
     autocomplete: google.maps.places.Autocomplete
   ) => {
     setAutocomplete(autocomplete);
@@ -51,37 +27,37 @@ export default function InputGoogle(props: InputGoogleProps) {
 
     const handlePlaceChanged = () => {
       const place = autocomplete.getPlace(); // Získání informací o vybraném místě z Autocomplete
-      const inputValue = place.formatted_address; // Získání hodnoty z Autocomplete
+      const inputValue = place; // Získání hodnoty z Autocomplete
       setInputValue(inputValue); // Nastavení hodnoty do stavové proměnné
-
+      setFormData({
+        ...formData,
+        [props.name]: [inputValue],
+      });
       console.log("place", place);
-      console.log("inputValue", inputValue);
     };
+
+      const options = {
+        types: ["geocode"],
+        componentRestrictions: { country: "cz" },
+      };
 
   return (
     <div className="">
-      {/* <Autocomplete
+      <GoogleMapsLoader>
+        <Autocomplete
         onLoad={(autocomplete) => handleAutocompleteLoad(autocomplete)} // onLoad událost, která se spustí po načtení komponenty Autocomplete
         onPlaceChanged={handlePlaceChanged} // onPlaceChanged událost, která se spustí po výběru místa v Autocomplete
-      >
-        <input
-          type="text"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)} // Propojení vstupu uživatele s hodnotou v stavové proměnné
-        />
-      </Autocomplete> */}
-
-      <Autocomplete
-        onLoad={(autocomplete) => handleAutocompleteLoad(autocomplete)} // onLoad událost, která se spustí po načtení komponenty Autocomplete
-        onPlaceChanged={handlePlaceChanged} // onPlaceChanged událost, která se spustí po výběru místa v Autocomplete
+        options={options}
       >
         <Input
-          value={inputValue}
+          value={inputValue.formatted_address}
           onChange={(e) => setInputValue(e.target.value)}
           {...props}
         />
         {/* Propojení vstupu uživatele s hodnotou v stavové proměnné */}
       </Autocomplete>
+      </GoogleMapsLoader>
+      
     </div>
   );
 }

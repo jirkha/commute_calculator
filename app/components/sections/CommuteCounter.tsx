@@ -1,26 +1,20 @@
-"use client";
-import React, { useState, createContext } from "react";
-import CommuteForms from "../forms/CommuteForms";
+import React from "react";
 import CommuteGoogleForms from "../forms/CommuteGoogleForms";
-import { CounterContextProvider } from "../context/CounterContext";
-
-export const CounterContext = createContext({});
-
-const [formData, setFormData] = useState({
-  current_residence: "",
-  planned_residence: "",
-  workplace: "",
-});
+import { CounterContextProvider } from "../contexts/CounterContext";
+import CounterResult from "../content/CounterResult";
 
 export default function CommuteCounter() {
+
+
   return (
     <section id="commute_counter" className="">
-      <CounterContext.Provider value={{ formData, setFormData }}>
+      <CounterContextProvider>
         <form>
           <CommuteGoogleForms />
           {/* <CommuteForms /> */}
         </form>
-      </CounterContext.Provider>
+        <CounterResult />
+      </CounterContextProvider>
     </section>
   );
 }

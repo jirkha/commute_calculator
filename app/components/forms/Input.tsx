@@ -23,7 +23,8 @@ export default function Input(props: InputProps) {
         type={props.type}
         name={props.name}
         onChange={props.onChange}
-        value={props.value}
+        //value={props.value || ""}
+        defaultValue={""}
         placeholder={props.placeholder}
       />
     </div>

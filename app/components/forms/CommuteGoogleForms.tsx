@@ -1,10 +1,11 @@
 "use client";
-import React, { useState } from "react";
-import Input from "./Input";
-import InputGoogle2 from "./InputGoogle2";
+import React, { useContext } from "react";
 import InputGoogle from "./InputGoogle";
+import { CounterContext } from "../contexts/CounterContext";
+import  {GoogleConnections}  from "../utils/GoogleConnections";
 
 function CommuteGoogleForms() {
+  const { formData, setFormData } = useContext(CounterContext);
   const inputsGoogle: {
     id: number;
     name: string;
@@ -28,12 +29,28 @@ function CommuteGoogleForms() {
     },
   ];
 
-  // const setValue = (e: any) => {
-  //   //e.preventDefault();
-  //   console.log("target", e);
-  //   console.log("value", e.value);
-  // };
-  // let values, setValues = useState({})
+async function submitForm() {
+  if (
+    formData.current_residence !== "" &&
+    formData.planned_residence !== "" &&
+    formData.workplace !== ""
+  ) {
+    const connections = await GoogleConnections(formData);
+    setFormData({
+      ...formData,
+      connections: connections
+      // public_current_workplace: connections[0],
+      // public_planned_workplace: connections[1],
+      // car_current_workplace: connections[2],
+      // car_planned_workplace: connections[3],
+    });
+    console.log("connections", connections);
+    
+  } else {
+    console.log("nejsou vyplněna všechna pole!");
+  };
+
+};
 
   return (
     <>
@@ -64,6 +81,13 @@ function CommuteGoogleForms() {
           <InputGoogle {...inputsGoogle} setValue={setValue} />
         </div>
       ))} */}
+      <button
+        type="button"
+        className="p-2 rounded bg-slate-200 border-2 border-black"
+        onClick={submitForm}
+      >
+        Spočítat délku cesty
+      </button>
     </>
   );
 }
