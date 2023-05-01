@@ -5,7 +5,7 @@ import Home from './components/sections/Home';
 function Page() {
   
   return (
-    <main className="text-center">
+    <main className="text-left p-3">
       <Home />
       <CommuteCounter />
     </main>

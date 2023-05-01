@@ -1,53 +1,56 @@
 "use client";
 import React, { useContext } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import InputGoogle from "./InputGoogle";
 import { CounterContext } from "../contexts/CounterContext";
 import  {GoogleConnections}  from "../utils/GoogleConnections";
 
 function CommuteGoogleForms() {
   const { formData, setFormData } = useContext(CounterContext);
-  const inputsGoogle: {
-    id: number;
-    name: string;
-    label: string;
-    type: string;
-    placeholder: string;
-  }[] = [
-    {
-      id: 100,
-      name: "current_residence",
-      label: "Současné bydliště",
-      type: "text",
-      placeholder: "",
-    },
-    {
-      id: 101,
-      name: "planned_residence",
-      label: "Plánované bydliště",
-      type: "text",
-      placeholder: "",
-    },
-  ];
+  const notify = () => toast.warning("Vyplňte prosím všechna pole");
+  // const inputsGoogle: {
+  //   id: number;
+  //   name: string;
+  //   label: string;
+  //   type: string;
+  //   placeholder: string;
+  // }[] = [
+  //   {
+  //     id: 100,
+  //     name: "current_residence",
+  //     label: "Současné bydliště",
+  //     type: "text",
+  //     placeholder: "",
+  //   },
+  //   {
+  //     id: 101,
+  //     name: "planned_residence",
+  //     label: "Plánované bydliště",
+  //     type: "text",
+  //     placeholder: "",
+  //   },
+  // ];
 
 async function submitForm() {
   if (
-    formData.current_residence !== "" &&
-    formData.planned_residence !== "" &&
-    formData.workplace !== ""
+    formData.points.current_residence !== "" &&
+    formData.points.planned_residence !== "" &&
+    formData.points.workplace !== ""
   ) {
     const connections = await GoogleConnections(formData);
     setFormData({
       ...formData,
-      connections: connections
+      connections: connections,
       // public_current_workplace: connections[0],
       // public_planned_workplace: connections[1],
       // car_current_workplace: connections[2],
       // car_planned_workplace: connections[3],
     });
     console.log("connections", connections);
-    
   } else {
-    console.log("nejsou vyplněna všechna pole!");
+    console.warn("nejsou vyplněna všechna pole!");
+    notify();
   };
 
 };
@@ -58,22 +61,28 @@ async function submitForm() {
         id={100}
         name="current_residence"
         label="Současné bydliště"
+        className="rounded p-2 mb-2 shadow-xl max-w-screen-sm"
         type="text"
         placeholder=""
+        required
       />
       <InputGoogle
         id={101}
         name="planned_residence"
         label="Plánované bydliště"
+        className="rounded p-2 mb-2 shadow-xl max-w-screen-sm"
         type="text"
         placeholder=""
+        required
       />
       <InputGoogle
         id={102}
         name="workplace"
         label="Pracoviště"
+        className="rounded p-2 mb-2 shadow-xl max-w-screen-sm"
         type="text"
         placeholder=""
+        required
       />
 
       {/* {inputsGoogle.map(({ ...inputsGoogle }) => (
@@ -83,11 +92,12 @@ async function submitForm() {
       ))} */}
       <button
         type="button"
-        className="p-2 rounded bg-slate-200 border-2 border-black"
+        className="px-3 py-2 my-2 rounded shadow-xl bg-slate-100 border-2 border-black"
         onClick={submitForm}
       >
         Spočítat délku cesty
       </button>
+      <ToastContainer />
     </>
   );
 }

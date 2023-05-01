@@ -8,25 +8,25 @@ export async function GoogleConnections(formData: any) {
     {
       id: 1,
       name: "public_current_workplace",
-      origin: formData.current_residence[0]?.geometry.location,
+      origin: formData.points.current_residence?.geometry.location,
       type: google.maps.TravelMode.TRANSIT,
     },
     {
       id: 2,
       name: "car_current_workplace",
-      origin: formData.current_residence[0]?.geometry.location,
+      origin: formData.points.current_residence?.geometry.location,
       type: google.maps.TravelMode.DRIVING,
     },
     {
       id: 3,
       name: "public_planned_workplace",
-      origin: formData.planned_residence[0]?.geometry.location,
+      origin: formData.points.planned_residence?.geometry.location,
       type: google.maps.TravelMode.TRANSIT,
     },
     {
       id: 4,
       name: "car_planned_workplace",
-      origin: formData.planned_residence[0]?.geometry.location,
+      origin: formData.points.planned_residence?.geometry.location,
       type: google.maps.TravelMode.DRIVING,
     },
   ];
@@ -40,7 +40,7 @@ export async function GoogleConnections(formData: any) {
           await googlePlace.route(
             {
               origin: origin,
-              destination: formData.workplace[0]?.geometry.location,
+              destination: formData.points.workplace?.geometry.location,
               travelMode: type,
             },
             (result, status) => {

@@ -1,25 +1,26 @@
 "use client";
 import React, { useContext, useState } from "react";
 import { CounterContext } from "../contexts/CounterContext";
-import { Autocomplete, useJsApiLoader } from "@react-google-maps/api";
 
 function CounterResult() {
   const { formData, setFormData } = useContext(CounterContext);
   console.log("formData", formData);
   return (
     <div>
-      {formData.current_residence !== "" && (
+      {formData.points.current_residence !== "" && (
         <p>
-          Současné bydliště: {formData.current_residence[0]?.formatted_address}
+          Současné bydliště:{" "}
+          {formData.points.current_residence?.formatted_address}
         </p>
       )}
-      {formData.planned_residence !== "" && (
+      {formData.points.planned_residence !== "" && (
         <p>
-          Plánované bydliště: {formData.planned_residence[0]?.formatted_address}
+          Plánované bydliště:{" "}
+          {formData.points.planned_residence?.formatted_address}
         </p>
       )}
-      {formData.workplace !== "" && (
-        <p>Pracoviště: {formData.workplace[0]?.formatted_address}</p>
+      {formData.points.workplace !== "" && (
+        <p>Pracoviště: {formData.points.workplace?.formatted_address}</p>
       )}
 
       {formData.connections.public_current_workplace && (

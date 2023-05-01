@@ -1,56 +1,56 @@
 "use client";
 import React, { createContext, useState } from "react";
 
-export type CounterContextType = {
-  formData: {
-    current_residence: any;
-    planned_residence: any;
-    workplace: any;
-    connections: any;
-    // public_current_workplace: any;
-    // car_current_workplace: any;
-    // public_planned_workplace: any;
-    // car_planned_workplace: any;
-  };
-  setFormData: React.Dispatch<
-    React.SetStateAction<{
-      current_residence: any;
-      planned_residence: any;
-      workplace: any;
-      connections: any;
-      // public_current_workplace: any;
-      // car_current_workplace: any;
-      // public_planned_workplace: any;
-      // car_planned_workplace: any;
-    }>
-  >;
+interface Points {
+  current_residence: "" | google.maps.places.PlaceResult;
+  planned_residence: "" | google.maps.places.PlaceResult;
+  workplace: "" | google.maps.places.PlaceResult;
+}
+
+interface Point {
+  [key: string]: string | object;
+}
+
+interface Center {
+  lat: number;
+  lng: number;
+}
+
+interface FormData {
+  points: Points;
+  other_points: Point;
+  actual_point: Center | google.maps.LatLng | undefined;
+  connections: any;
+}
+
+interface CounterContextType {
+  formData: FormData;
+  setFormData: React.Dispatch<React.SetStateAction<FormData>>;
+}
+
+const defaultFormData: FormData = {
+  points: {
+    current_residence: "",
+    planned_residence: "",
+    workplace: "",
+  },
+  other_points: {},
+  actual_point: {
+    lat: 50.0879,
+    lng: 14.4205,
+  },
+  connections: "",
 };
 
 export const CounterContext = createContext<CounterContextType>({
-  formData: {
-    current_residence: "",
-    planned_residence: "",
-    workplace: "",
-    connections: []
-    // public_current_workplace: "",
-    // car_current_workplace: "",
-    // public_planned_workplace: "",
-    // car_planned_workplace: ""
-  },
+  formData: defaultFormData,
   setFormData: () => {},
 });
 
-export const CounterContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
-  const [formData, setFormData] = useState({
-    current_residence: "",
-    planned_residence: "",
-    workplace: "",
-    connections: []
-    // public_current_workplace: "",
-    // car_current_workplace: "",
-    // public_planned_workplace: "",
-    // car_planned_workplace: "",
-  });
+export const CounterContextProvider = ({
+  children,
+}: React.PropsWithChildren<{}>) => {
+  const [formData, setFormData] = useState<FormData>(defaultFormData);
 
   return (
     <CounterContext.Provider value={{ formData, setFormData }}>

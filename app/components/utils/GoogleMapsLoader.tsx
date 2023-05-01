@@ -1,7 +1,7 @@
 /* global google */ 
 "use client";
 import React, { useState } from "react";
-import { useLoadScript } from "@react-google-maps/api";
+import { useJsApiLoader } from "@react-google-maps/api";
 
 interface Props {
   children: React.ReactNode;
@@ -17,7 +17,7 @@ const GoogleMapsLoader: React.FC<Props> = ({ children }) => {
     return <h3>Chyba při načítání Google Maps API</h3>;
   }
 
-  const { isLoaded, loadError } = useLoadScript({
+  const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey,
     libraries,
   });
