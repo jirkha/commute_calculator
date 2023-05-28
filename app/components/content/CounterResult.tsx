@@ -4,26 +4,44 @@ import { CounterContext } from "../contexts/CounterContext";
 
 function CounterResult() {
   const { formData, setFormData } = useContext(CounterContext);
-  console.log("formData", formData);
+  //console.log("formData", formData);
   return (
     <div>
-      {formData.points.current_residence !== "" && (
-        <p>
-          Současné bydliště:{" "}
-          {formData.points.current_residence?.formatted_address}
-        </p>
+      <h1 className="text-xl underline underline-offset-2">Současný stav</h1>
+      {formData.current.points.residence !== "" ? (
+        <li>
+          Bydliště: {formData.current.points.residence?.formatted_address}
+        </li>
+      ) : (
+        <p className="text-sm">Nejprve zadejte požadované údaje</p>
       )}
-      {formData.points.planned_residence !== "" && (
-        <p>
-          Plánované bydliště:{" "}
-          {formData.points.planned_residence?.formatted_address}
-        </p>
+      {formData.current.points.workplace !== "" && (
+        <li>
+          Pracoviště: {formData.current.points.workplace?.formatted_address}
+        </li>
       )}
-      {formData.points.workplace !== "" && (
-        <p>Pracoviště: {formData.points.workplace?.formatted_address}</p>
+      {formData.current.times.travel_time !== "" && (
+        <li>Doba jízdy: {formData.current.times.travel_time} hod.</li>
       )}
 
-      {formData.connections.public_current_workplace && (
+      <h1 className="text-xl underline underline-offset-2 pt-4">Plánovaný stav</h1>
+      {formData.planned.points.residence !== "" ? (
+        <li>
+          Bydliště: {formData.planned.points.residence?.formatted_address}
+        </li>
+      ) : (
+        <p className="text-sm">Nejprve zadejte požadované údaje</p>
+      )}
+      {formData.planned.points.workplace !== "" && (
+        <li>
+          Pracoviště: {formData.planned.points.workplace?.formatted_address}
+        </li>
+      )}
+      {formData.planned.times.travel_time !== "" && (
+        <li>Doba jízdy: {formData.planned.times.travel_time} hod.</li>
+      )}
+
+      {/* {formData.connections.public_current_workplace && (
         <>
           <h3>
             <strong>Doba jízd</strong>
@@ -63,7 +81,7 @@ function CounterResult() {
               ?.duration?.text
           }
         </p>
-      )}
+      )} */}
     </div>
   );}
 

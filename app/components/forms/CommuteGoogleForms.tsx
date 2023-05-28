@@ -1,103 +1,184 @@
 "use client";
 import React, { useContext } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import InputGoogle from "./InputGoogle";
 import { CounterContext } from "../contexts/CounterContext";
-import  {GoogleConnections}  from "../utils/GoogleConnections";
 
-function CommuteGoogleForms() {
+
+function CommuteGoogleForms({ name }: { [key: string]: string }) {
   const { formData, setFormData } = useContext(CounterContext);
-  const notify = () => toast.warning("Vyplňte prosím všechna pole");
-  // const inputsGoogle: {
-  //   id: number;
-  //   name: string;
-  //   label: string;
-  //   type: string;
-  //   placeholder: string;
-  // }[] = [
-  //   {
-  //     id: 100,
-  //     name: "current_residence",
-  //     label: "Současné bydliště",
-  //     type: "text",
-  //     placeholder: "",
-  //   },
-  //   {
-  //     id: 101,
-  //     name: "planned_residence",
-  //     label: "Plánované bydliště",
-  //     type: "text",
-  //     placeholder: "",
-  //   },
-  // ];
+ 
+  const counterType = name === "current" ? "current" : "planned";
 
-async function submitForm() {
-  if (
-    formData.points.current_residence !== "" &&
-    formData.points.planned_residence !== "" &&
-    formData.points.workplace !== ""
-  ) {
-    const connections = await GoogleConnections(formData);
-    setFormData({
+// async function submitForm() {
+//   if (
+//     formData.current.points.residence !== "" &&
+//     formData.planned.points.residence !== "" &&
+//     formData.current.points.workplace !== "" &&
+//     formData.planned.points.workplace !== ""
+//   ) {
+//     setFormData((prevFormData) => {
+//       const updatedFormData = { ...prevFormData };
+//       updatedFormData.current.connections.connections_list = [];
+//       updatedFormData.planned.connections.connections_list = [];
+//       return updatedFormData;
+//     });
+
+//     const connections = await GoogleConnections(formData);
+//     console.log('connections', connections)
+
+//     // Výpočet celkové doby spojení
+// const currentTotalTime = Object.values(connections).reduce(
+//   (accumulator, connection) => {
+//     if (connection.name === "current") {
+//       return accumulator + (connection.response.routes[0].legs[0].duration.value / 60);
+//     }
+//     return accumulator;
+//   },
+//   0
+// );
+
+// const plannedTotalTime = Object.values(connections).reduce(
+//   (accumulator, connection) => {
+//     if (connection.name === "planned") {
+//       return accumulator + (connection.response.routes[0].legs[0].duration.value / 60);
+//     }
+//     return accumulator;
+//   },
+//   0
+// );
+
+//     setFormData((prevFormData) => {
+//       const updatedFormData = { ...prevFormData };
+
+//       Object.keys(connections).forEach((key) => {
+//         const connection = connections[key];
+//         const type = connection.name;
+
+//         const existingConnections =
+//           updatedFormData[type].connections.connections_list;
+//         const connectionExists = existingConnections.some(
+//           (existingConnection) => existingConnection.id === connection.id
+//         );
+
+//         if (!connectionExists) {
+//           updatedFormData[type].connections.connections_list.push(connection);
+//         }
+//       });
+
+//       // Přiřazení celkové doby spojení do formData
+//       updatedFormData.current.connections.total_time = currentTotalTime;
+//       updatedFormData.planned.connections.total_time = plannedTotalTime;
+
+//       return updatedFormData;
+//     });
+//   } else {
+//     console.warn("Nejsou vyplněna všechna pole!");
+//     notify();
+//   }
+//   console.log("formData", formData);
+// }
+
+
+
+  const setInput = (increment: number) => {
+    const counter = formData[counterType].points.counter + increment;
+    if (increment !== -1) {
+      setFormData({
       ...formData,
-      connections: connections,
-      // public_current_workplace: connections[0],
-      // public_planned_workplace: connections[1],
-      // car_current_workplace: connections[2],
-      // car_planned_workplace: connections[3],
+      [counterType]: {
+        ...formData[counterType],
+        points: {
+          ...formData[counterType].points,
+          counter: counter,
+        },
+      },
     });
-    console.log("connections", connections);
-  } else {
-    console.warn("nejsou vyplněna všechna pole!");
-    notify();
+    } else {
+      const updatedOther = { ...formData[counterType].points.other };
+      delete updatedOther[counter];
+      setFormData({
+        ...formData,
+        [counterType]: {
+          ...formData[counterType],
+          points: {
+            ...formData[counterType].points,
+            counter: counter,
+            other: updatedOther,
+          },
+        },
+      });
+    }
+
+    
   };
 
-};
+  const inputs = [];
+  for (let i = 0; i < formData[counterType].points.counter; i++) {
+    inputs.push(
+      <InputGoogle
+        key={i}
+        id={i}
+        name={`${counterType}.points.other`}
+        kind={counterType}
+        point="other"
+        label={`Bod na cestě ${i + 1}`}
+        className="rounded p-2 mb-2 shadow-xl max-w-screen-sm"
+        type="text"
+        placeholder=""
+        required
+      />
+    );
+  }
 
   return (
     <>
       <InputGoogle
         id={100}
-        name="current_residence"
-        label="Současné bydliště"
+        name={`${counterType}.points.residence`}
+        kind={counterType}
+        point="residence"
+        label={name === "current" ? "Současné bydliště" : "Plánované bydliště"}
         className="rounded p-2 mb-2 shadow-xl max-w-screen-sm"
         type="text"
         placeholder=""
         required
       />
+      {inputs}
       <InputGoogle
         id={101}
-        name="planned_residence"
-        label="Plánované bydliště"
-        className="rounded p-2 mb-2 shadow-xl max-w-screen-sm"
-        type="text"
-        placeholder=""
-        required
-      />
-      <InputGoogle
-        id={102}
-        name="workplace"
-        label="Pracoviště"
+        name={`${counterType}.points.workplace`}
+        kind={counterType}
+        point="workplace"
+        label={
+          name === "current" ? "Současné pracoviště" : "Plánované pracoviště"
+        }
         className="rounded p-2 mb-2 shadow-xl max-w-screen-sm"
         type="text"
         placeholder=""
         required
       />
 
+      <button
+        type="button"
+        className="px-3 py-2 my-2 rounded shadow-xl bg-slate-100 disabled:bg-slate-300 disabled:text-slate-400 border-2 border-black"
+        onClick={() => setInput(-1)}
+        disabled={formData[counterType].points.counter < 1 ? true : false}
+      >
+        Odebrat bod
+      </button>
+      <button
+        type="button"
+        className="px-3 py-2 my-2 rounded shadow-xl bg-slate-100 border-2 border-black"
+        onClick={() => setInput(1)}
+      >
+        Přidat další bod
+      </button>
       {/* {inputsGoogle.map(({ ...inputsGoogle }) => (
         <div key={inputsGoogle.id} className="">
           <InputGoogle {...inputsGoogle} setValue={setValue} />
         </div>
       ))} */}
-      <button
-        type="button"
-        className="px-3 py-2 my-2 rounded shadow-xl bg-slate-100 border-2 border-black"
-        onClick={submitForm}
-      >
-        Spočítat délku cesty
-      </button>
-      <ToastContainer />
+
     </>
   );
 }

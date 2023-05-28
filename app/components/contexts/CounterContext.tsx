@@ -2,25 +2,46 @@
 import React, { createContext, useState } from "react";
 
 interface Points {
-  current_residence: "" | google.maps.places.PlaceResult;
-  planned_residence: "" | google.maps.places.PlaceResult;
+  residence: "" | google.maps.places.PlaceResult;
   workplace: "" | google.maps.places.PlaceResult;
-}
-
-interface Point {
-  [key: string]: string | object;
-}
+  other: "" | Record<number, google.maps.places.PlaceResult>;
+  counter: number;
+};
+interface Connections {
+  connections_list: [] |"" //| google.maps.DirectionsResult;
+  total_time: number;
+  modes: object;
+};
+interface Times {
+  start_work: string;
+  end_work: string;
+  morning_preparation: string;
+  travel_time: string;
+  sleep_time: string;
+  wakeup_time: string;
+  free_time: string;
+};
 
 interface Center {
   lat: number;
   lng: number;
 }
 
-interface FormData {
-  points: Points;
-  other_points: Point;
-  actual_point: Center | google.maps.LatLng | undefined;
-  connections: any;
+export interface FormData {
+  current: {
+    points: Points;
+    connections: Connections;
+    times: Times;
+  };
+  planned: {
+    points: Points;
+    connections: Connections;
+    times: Times;
+  };
+  general: {
+    actual_point: Center | google.maps.LatLng | undefined;
+    free_time_difference: string;
+  };
 }
 
 interface CounterContextType {
@@ -29,17 +50,58 @@ interface CounterContextType {
 }
 
 const defaultFormData: FormData = {
-  points: {
-    current_residence: "",
-    planned_residence: "",
-    workplace: "",
+  current: {
+    points: {
+      residence: "",
+      workplace: "",
+      other: "",
+      counter: 0,
+    },
+    connections: {
+      connections_list: "",
+      total_time: 0,
+      modes: {},
+    },
+    times: {
+      start_work: "",
+      end_work: "",
+      morning_preparation: "",
+      travel_time: "",
+      sleep_time: "",
+      wakeup_time: "",
+      free_time: "",
+    },
   },
-  other_points: {},
-  actual_point: {
-    lat: 50.0879,
-    lng: 14.4205,
+  planned: {
+    points: {
+      residence: "",
+      workplace: "",
+      other: "",
+      counter: 0,
+    },
+    connections: {
+      connections_list: "",
+      total_time: 0,
+      modes: {},
+    },
+    times: {
+      start_work: "",
+      end_work: "",
+      morning_preparation: "",
+      travel_time: "",
+      sleep_time: "",
+      wakeup_time: "",
+      free_time: "",
+    },
   },
-  connections: "",
+  general: {
+    actual_point: undefined,
+    free_time_difference: "",
+  },
+  // actual_point: {
+  //   lat: 50.0879,
+  //   lng: 14.4205,
+  // },
 };
 
 export const CounterContext = createContext<CounterContextType>({

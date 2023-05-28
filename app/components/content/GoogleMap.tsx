@@ -1,30 +1,60 @@
-"use client"
-import React, { useContext } from "react";
-import { GoogleMap as Map, MarkerF, DirectionsRenderer } from "@react-google-maps/api";
+"use client";
+import React, { useContext, useState, useEffect } from "react";
+import {
+  GoogleMap as Map,
+  MarkerF,
+  DirectionsRenderer,
+} from "@react-google-maps/api";
 import { CounterContext } from "../contexts/CounterContext";
 
 function GoogleMap() {
-    const { formData } = useContext(CounterContext);
+  const { formData } = useContext(CounterContext);
+
+
   const containerStyle = {
-    width: "600px",
-    height: "600px",
+    width: "400px",
+    height: "300px",
+    border: "1px solid black",
+    boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.5)",
   };
 
   return (
     <div>
       <Map
         mapContainerStyle={containerStyle}
-        center={formData.actual_point}
+        center={
+          formData.general.actual_point || {
+            lat: 50.0879,
+            lng: 14.4205,
+          }
+        }
         zoom={15}
       >
-        {formData.actual_point !== undefined && (
-          <MarkerF position={formData.actual_point} />
+        {formData.general.actual_point !== undefined && (
+          <MarkerF position={formData.general.actual_point} />
         )}
-        {formData.connections.car_current_workplace && (
-          <DirectionsRenderer
-            directions={formData.connections.car_current_workplace}
-          />
-        )}
+
+        {formData.current.connections.connections_list.length > 0 &&
+          formData.current.connections.connections_list.map((item) => {
+            return (
+              //console.log('item.response',item.id, item.response),
+              <DirectionsRenderer
+                key={item.id} // Přidejte unikátní klíč pro každý prvek
+                directions={item.response}
+                //onDirectionsChanged={handleFormSubmit}
+              />
+            );
+          })}
+
+        {/* <DirectionsRenderer
+            directions={directions}
+            options={{
+              polylineOptions: {
+                strokeColor: "red", // Změna barvy trasy na červenou
+                strokeWeight: 4, // Nastavení tloušťky trasy
+              },
+            }}
+          /> */}
       </Map>
     </div>
   );
