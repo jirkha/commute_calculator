@@ -40,6 +40,7 @@ export interface FormData {
   };
   general: {
     actual_point: Center | google.maps.LatLng | undefined;
+    detail_level: string;
     free_time_difference: string;
   };
 }
@@ -96,6 +97,7 @@ const defaultFormData: FormData = {
   },
   general: {
     actual_point: undefined,
+    detail_level: "",
     free_time_difference: "",
   },
   // actual_point: {

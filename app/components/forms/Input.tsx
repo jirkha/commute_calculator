@@ -20,10 +20,8 @@ export default function Input(props: InputProps) {
 
   return (
     <div className="flex flex-col">
-      <label>{props.label}</label>
-      <input
-        {...props}
-      />
+      <label className="text-2xl text-calcl">{props.label}</label>
+      <input {...props} />
     </div>
   );
 }

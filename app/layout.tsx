@@ -1,21 +1,25 @@
-import Navbar from './components/sections/Navbar';
-import './globals.css'
+import { CounterContextProvider } from "./components/contexts/CounterContext";
+import Navbar from "./components/sections/Navbar";
+import GoogleMapsLoader from "./components/utils/GoogleMapsLoader";
+import "./globals.css";
 
 export const metadata = {
-  title: 'Kalkulačka dojíždění',
-  description: 'Aplikace složící k výpočtu volného času',
-}
+  title: "Kalkulačka dojíždění",
+  description: "Aplikace složící k výpočtu volného času",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <body className="min-h-full w-full bg-[#A1BFF7]">
+      <body className="min-h-full w-full">
         <Navbar />
-        {children}
+        <CounterContextProvider>
+          <GoogleMapsLoader>{children}</GoogleMapsLoader>
+        </CounterContextProvider>
       </body>
     </html>
   );

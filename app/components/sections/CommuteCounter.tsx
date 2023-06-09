@@ -1,7 +1,6 @@
 "use client";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { submitForm } from "../forms/SubmitForm";
-import GoogleMapsLoader from "../utils/GoogleMapsLoader";
 import CommuteGoogleForms from "../forms/CommuteGoogleForms";
 import CounterResult from "../content/CounterResult";
 import CommuteForms from "../forms/CommuteForms";
@@ -9,6 +8,7 @@ import GoogleMap from "../content/GoogleMap";
 import { CounterContext } from "../contexts/CounterContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import RadioLevel from "../forms/RadioLevel";
 
 
 export default function CommuteCounter() {
@@ -24,7 +24,8 @@ export default function CommuteCounter() {
 
   return (
     <section id="commute_counter" className="">
-      <GoogleMapsLoader>
+      <RadioLevel />
+      <p>LEVEL: {formData.general.detail_level}</p>
         <form onSubmit={handleFormSubmit}>
           <div className="flex flex-col md:flex-row md:gap-8 ">
             <div>
@@ -49,8 +50,6 @@ export default function CommuteCounter() {
           <CounterResult />
           <CommuteForms />
         </div>
-      </GoogleMapsLoader>
-
       <ToastContainer />
     </section>
   );
