@@ -1,7 +1,13 @@
+import { FormData as MyFormData } from "../contexts/CounterContext";
 import { freeTimeCounter } from "../utils/FreeTimeCounter";
 import { GoogleConnections } from "../utils/GoogleConnections";
 
-export const submitForm = async (formData, notify, setFormData, e) => {
+export const submitForm = async (
+  formData: MyFormData,
+  notify: any,
+  setFormData: React.Dispatch<React.SetStateAction<MyFormData>>,
+  e: any
+) => {
   //console.log("event", e);
   //console.log("formData", formData);
   if (
@@ -10,31 +16,35 @@ export const submitForm = async (formData, notify, setFormData, e) => {
     formData.current.points.workplace !== "" &&
     formData.planned.points.workplace !== ""
   ) {
+    setFormData((prevFormData) => {
+      const updatedFormData = { ...prevFormData };
+      updatedFormData.current.connections.connections_list = [];
+      updatedFormData.planned.connections.connections_list = [];
+      return updatedFormData;
+    });
 
-setFormData((prevFormData) => {
-  const updatedFormData = { ...prevFormData };
-  updatedFormData.current.connections.connections_list = [];
-  updatedFormData.planned.connections.connections_list = [];
-  return updatedFormData;
-});
-
-    const connections = await GoogleConnections(formData);
+    const connections: { [key: string]: any } = await GoogleConnections(
+      formData
+    );
     console.log("connections", connections);
 
     setFormData((prevFormData) => {
-      let updatedFormData = { ...prevFormData };
+      let updatedFormData: MyFormData = { ...prevFormData };
       Object.keys(connections).forEach((key) => {
         const connection = connections[key];
-        const type = connection.name;
+        const type: string = connection.name;
 
         const existingConnections =
-          updatedFormData[type].connections.connections_list;
+          updatedFormData[type as keyof Omit<typeof updatedFormData, "general">]
+            .connections.connections_list;
         const connectionExists = existingConnections.some(
-          (existingConnection) => existingConnection.id === connection.id
+          (existingConnection: any) => existingConnection.id === connection.id
         );
 
         if (!connectionExists) {
-          updatedFormData[type].connections.connections_list.push(connection);
+          updatedFormData[
+            type as keyof Omit<typeof updatedFormData, "general">
+          ].connections.connections_list.push(connection);
         }
       });
 
@@ -69,31 +79,31 @@ setFormData((prevFormData) => {
       updatedFormData.planned.connections.total_time = planned_travel_time;
 
       //currentTotalTime
-    //   let hours = Math.floor(current_travel_time / 3600);
-    //   let minutes = Math.floor((current_travel_time % 3600) / 60);
-    //   const travel_time_current = `${hours
-    //     .toString()
-    //     .padStart(2, "0")}:${minutes.toString().padStart(2, "0")}`;
+      //   let hours = Math.floor(current_travel_time / 3600);
+      //   let minutes = Math.floor((current_travel_time % 3600) / 60);
+      //   const travel_time_current = `${hours
+      //     .toString()
+      //     .padStart(2, "0")}:${minutes.toString().padStart(2, "0")}`;
 
       //plannedTotalTime
-    //   hours = Math.floor(planned_travel_time / 3600);
-    //   minutes = Math.floor((planned_travel_time % 3600) / 60);
-    //   const travel_time_planned = `${hours
-    //     .toString()
-    //     .padStart(2, "0")}:${minutes.toString().padStart(2, "0")}`;
+      //   hours = Math.floor(planned_travel_time / 3600);
+      //   minutes = Math.floor((planned_travel_time % 3600) / 60);
+      //   const travel_time_planned = `${hours
+      //     .toString()
+      //     .padStart(2, "0")}:${minutes.toString().padStart(2, "0")}`;
 
       // Převod minut zpět na hodiny a minuty ve formátu hh:mm
       let resultHours = Math.floor(current_travel_time / 60);
       let resultMinutesFormatted = current_travel_time % 60;
 
       // Sestavení výsledného času ve formátu hh:mm
- const travel_time_current = `${resultHours
-   .toString()
-   .padStart(2, "0")
-   .slice(0, 5)}:${resultMinutesFormatted
-   .toString()
-   .padStart(2, "0")
-   .slice(0, 2)}`;
+      const travel_time_current = `${resultHours
+        .toString()
+        .padStart(2, "0")
+        .slice(0, 5)}:${resultMinutesFormatted
+        .toString()
+        .padStart(2, "0")
+        .slice(0, 2)}`;
 
       resultHours = Math.floor(planned_travel_time / 60);
       resultMinutesFormatted = planned_travel_time % 60;
@@ -110,8 +120,8 @@ setFormData((prevFormData) => {
       updatedFormData.current.times.travel_time = travel_time_current;
       updatedFormData.planned.times.travel_time = travel_time_planned;
 
-            freeTimeCounter(updatedFormData, e);
-      
+      freeTimeCounter(updatedFormData, e);
+
       return updatedFormData;
     });
   } else {

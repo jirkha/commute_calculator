@@ -35,7 +35,7 @@ function GoogleMap() {
         )}
 
         {formData.current.connections.connections_list.length > 0 &&
-          formData.current.connections.connections_list.map((item) => {
+          formData.current.connections.connections_list.map((item: any) => {
             return (
               //console.log('item.response',item.id, item.response),
               <DirectionsRenderer

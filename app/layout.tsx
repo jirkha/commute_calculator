@@ -3,10 +3,15 @@ import Navbar from "./components/sections/Navbar";
 import GoogleMapsLoader from "./components/utils/GoogleMapsLoader";
 import "./globals.css";
 
-export const metadata = {
-  title: "Kalkulačka dojíždění",
-  description: "Aplikace složící k výpočtu volného času",
-};
+// type Metadata = {
+//   title: string;
+//   description: string;
+// };
+
+//  const metadata: Metadata = {
+//    title: "Kalkulačka dojíždění",
+//    description: "Aplikace složící k výpočtu volného času",
+//  };
 
 export default function RootLayout({
   children,
@@ -15,6 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <title>Kalkulátor volného času</title>
+      </head>
       <body className="min-h-full w-full">
         <Navbar />
         <CounterContextProvider>
@@ -24,3 +32,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+// export { metadata };

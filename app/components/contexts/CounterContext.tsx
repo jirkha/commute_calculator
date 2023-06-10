@@ -8,18 +8,18 @@ interface Points {
   counter: number;
 };
 interface Connections {
-  connections_list: [] |"" //| google.maps.DirectionsResult;
+  connections_list: [] |"" | any;
   total_time: number;
   modes: object;
 };
 interface Times {
-  start_work: string;
-  end_work: string;
-  morning_preparation: string;
-  travel_time: string;
-  sleep_time: string;
-  wakeup_time: string;
-  free_time: string;
+  start_work: number;
+  end_work: number;
+  morning_preparation: number;
+  travel_time: number | string;
+  sleep_time: number;
+  wakeup_time: number;
+  free_time: number;
 };
 
 interface Center {
@@ -64,13 +64,13 @@ const defaultFormData: FormData = {
       modes: {},
     },
     times: {
-      start_work: "",
-      end_work: "",
-      morning_preparation: "",
-      travel_time: "",
-      sleep_time: "",
-      wakeup_time: "",
-      free_time: "",
+      start_work: 0,
+      end_work: 0,
+      morning_preparation: 0,
+      travel_time: 0,
+      sleep_time: 0,
+      wakeup_time: 0,
+      free_time: 0,
     },
   },
   planned: {
@@ -86,13 +86,13 @@ const defaultFormData: FormData = {
       modes: {},
     },
     times: {
-      start_work: "",
-      end_work: "",
-      morning_preparation: "",
-      travel_time: "",
-      sleep_time: "",
-      wakeup_time: "",
-      free_time: "",
+      start_work: 0,
+      end_work: 0,
+      morning_preparation: 0,
+      travel_time: 0,
+      sleep_time: 0,
+      wakeup_time: 0,
+      free_time: 0,
     },
   },
   general: {

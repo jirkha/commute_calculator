@@ -1,4 +1,6 @@
-export function freeTimeCounter(updatedFormData: FormData, e: any) {
+import { FormData as MyFormData } from "../contexts/CounterContext";
+
+export function freeTimeCounter(updatedFormData: MyFormData, e: any) {
   // Rozdělení času na hodiny a minuty
   // const [start_work_hours, start_work_minutes] =
   //   e.target.elements.start_work.value.split(":").map(Number);
