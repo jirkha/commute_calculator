@@ -23,9 +23,8 @@ export default function CommuteCounter() {
 
 
   return (
-    <section id="commute_counter" className="">
+    <section id="commute_counter" className="p-2">
       <RadioLevel />
-      <p>LEVEL: {formData.general.detail_level}</p>
       <form onSubmit={handleFormSubmit}>
         <div className="flex flex-col md:flex-row md:gap-8 ">
           <div>
@@ -39,7 +38,7 @@ export default function CommuteCounter() {
           </div>
         </div>
         <div className="flex flex-col md:flex-row md:gap-8 ">
-          <CounterResult />
+          
           <CommuteForms />
         </div>
 
@@ -48,7 +47,7 @@ export default function CommuteCounter() {
           className="px-3 py-2 my-2 rounded shadow-xl text-slate-300 bg-[#041634] border-2 border-black"
         >
           Spočítat délku cesty
-        </button>
+        </button><CounterResult />
       </form>
 
       <ToastContainer />

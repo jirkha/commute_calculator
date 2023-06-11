@@ -18,8 +18,8 @@ function RadioLevel() {
   return (
     <div>
       <form>
-        <fieldset className="border-2 border-black">
-          <legend className="text-xl font-bold">
+        <fieldset className="p-2 rounded-md border-2 border-black bg-calcl roun">
+          <legend className="mx-2 pt-6 text-xl font-bold">
             Způsob výpočtu volného času
           </legend>
           <div>
@@ -31,7 +31,7 @@ function RadioLevel() {
               onChange={(e) => handleSelectChange(e.target.value)}
               defaultChecked={formData.general.detail_level === "quick"}
             />
-            <label htmlFor="choice1" className="text-xl">
+            <label htmlFor="choice1" className="mx-2 text-xl">
               Orientačně
             </label>
           </div>
@@ -44,7 +44,7 @@ function RadioLevel() {
               onChange={(e) => handleSelectChange(e.target.value)}
               defaultChecked={formData.general.detail_level === "detailed"}
             />
-            <label htmlFor="choice2" className="text-xl">
+            <label htmlFor="choice2" className="mx-2 text-xl">
               Podrobně
             </label>
           </div>

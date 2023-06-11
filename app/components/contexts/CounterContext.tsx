@@ -2,8 +2,8 @@
 import React, { createContext, useState } from "react";
 
 interface Points {
-  residence: "" | google.maps.places.PlaceResult;
-  workplace: "" | google.maps.places.PlaceResult;
+  residence: google.maps.places.PlaceResult | any;
+  workplace: google.maps.places.PlaceResult | any;
   other: "" | Record<number, google.maps.places.PlaceResult>;
   counter: number;
 };
@@ -45,7 +45,7 @@ export interface FormData {
   };
 }
 
-interface CounterContextType {
+export interface CounterContextType {
   formData: FormData;
   setFormData: React.Dispatch<React.SetStateAction<FormData>>;
 }

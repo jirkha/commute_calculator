@@ -25,6 +25,7 @@ export default function InputGoogle(props: InputGoogleProps) {
     useState<google.maps.places.Autocomplete | null>(null);
   const { formData, setFormData } = useContext(CounterContext);
   const kind = props.kind === "current" ? "current" : "planned";
+  const point = props.point;
 
   const handleAutocompleteLoad = (
     autocomplete: google.maps.places.Autocomplete
@@ -82,13 +83,23 @@ export default function InputGoogle(props: InputGoogleProps) {
       >
         <Input
           {...props}
-          value={inputValue.toString()}
+          value={
+            inputValue !== ""
+              ? inputValue.toString()
+              : (point === "residence" || point === "workplace") &&
+                (typeof formData[kind]?.points[point] !== "string" &&
+                formData[kind]?.points[point]?.formatted_address !== undefined
+                  ? formData[kind]?.points[point]?.formatted_address.toString()
+                  : "")
+          }
           onChange={(e) => setInputValue(e.target.value)}
           onClick={handleInputClick}
         />
         {/* Propojení vstupu uživatele s hodnotou v stavové proměnné */}
       </Autocomplete>
-      {props.point !== "workplace" && <Select {...props} />}
+      {props.point !== "workplace" && props.id !== 200 && props.id !== 201 && (
+        <Select {...props} />
+      )}
     </div>
   );
 }

@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/app/images/logo.jpg";
+import text from "@/app/images/text.png";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const items: { label: string; page: string }[] = [
@@ -30,8 +31,13 @@ function Navbar() {
           <Image
             className="ml-8 w-16"
             src={logo}
-            alt="Logo of the author"
+            alt="Logo of the App"
           ></Image>
+          {/* <Image
+            className="h-16"
+            src={text}
+            alt="Name of the App"
+          ></Image> */}
           <ul className="hidden text-xl md:flex space-x-8 mr-10   text-slate-100">
             {items.map(({ label, page }) => (
               <li
