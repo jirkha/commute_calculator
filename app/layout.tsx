@@ -1,4 +1,3 @@
-"use client";
 import { CounterContextProvider } from "./components/contexts/CounterContext";
 import Navbar from "./components/sections/Navbar";
 import GoogleMapsLoader from "./components/utils/GoogleMapsLoader";
