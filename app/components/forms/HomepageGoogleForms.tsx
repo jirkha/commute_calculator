@@ -1,16 +1,35 @@
 "use client";
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import InputGoogle from "./InputGoogle";
-import Image from "next/image";
-import details from "@/app/images/details.jpeg";
-import briefly from "@/app/images/fast.png";
 import { CounterContext } from "../contexts/CounterContext";
 import { FormData } from "../contexts/CounterContext";
 import Link from "next/link";
+import { AiOutlineDown } from "react-icons/ai";
 
 function HomepageGoogleForms() {
 
   const { setFormData } = useContext(CounterContext);
+    const [menu, setMenu] = useState<boolean>(false);
+    const menuRef = useRef<HTMLUListElement | null>(null);
+
+    useEffect(() => {
+      const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+        if (
+          menuRef.current &&
+          !menuRef.current.contains(event.target as Node) &&
+          menu
+        ) {
+          setMenu(false);
+        }
+      };
+
+      document.addEventListener("click", handleClickOutside);
+
+      return () => {
+        document.removeEventListener("click", handleClickOutside);
+      };
+    }, [menu]);
+
 
   const handleSelect =  (value: string) => {
 
@@ -25,14 +44,14 @@ function HomepageGoogleForms() {
   };
 
   return (
-    <div className="max-w-md">
-      <div className="grid opacity-90 gap-5 bg-calcd items-center">
+    <div style={{ width: "400px" }}>
+      <div className="grid opacity-90 gap-5 bg-black items-center">
         <InputGoogle
           id={200}
           name="current.points.residence"
           kind="current"
           point="residence"
-          label="Současné bydliště"
+          label="KDE BYDLÍM TEĎ"
           className="rounded p-2 shadow-xl"
           type="text"
           placeholder=""
@@ -43,13 +62,13 @@ function HomepageGoogleForms() {
           name="planned.points.residence"
           kind="planned"
           point="residence"
-          label="Plánované bydliště"
+          label="KAM SE CHCI STĚHOVAT"
           className="rounded p-2 shadow-xl"
           type="text"
           placeholder=""
           required
         />
-        <InputGoogle
+        {/* <InputGoogle
           id={202}
           name="current.points.workplace"
           kind="current"
@@ -70,40 +89,37 @@ function HomepageGoogleForms() {
           type="text"
           placeholder=""
           required
-        />
-
-        <div className="grid grid-row-2 gap-4 items-stretch">
-          <Link href="/calculator" onClick={() => handleSelect("detailed")}>
-            <div className="p-4 cursor-pointer justify-items-center rounded-md bg-calcl w-auto flex justify-around items-center">
-              <Image
-                className="p-4 w-36 mx-auto"
-                src={details}
-                alt="Details"
-              ></Image>
-              <div>
-                <h1 className="text-calcd font-bold">PODROBNĚ</h1>
-                <p className="text-calcd">
-                  Statistika dle jednotlivých pracovních dní v týdnu
-                </p>
-              </div>
-            </div>
-          </Link>
-          <Link href="/calculator" onClick={() => handleSelect("quick")}>
-            <div className="p-4 cursor-pointer justify-items-center rounded-md bg-calcl w-auto flex justify-around items-center">
-              <Image
-                className="p-4 w-36 mx-auto"
-                src={briefly}
-                alt="Details"
-              ></Image>
-              <div>
-                <h1 className="text-calcd font-bold">ORIENTAČNĚ</h1>
-                <p className="text-calcd">
-                  Výsledek dle zvyklostí průměrného pracovního dne
-                </p>
-              </div>
-            </div>
-          </Link>
+        /> */}
+        <div
+          onClick={() => setMenu(!menu)}
+          className="p-2 cursor-pointer rounded-md border-4 border-calcd w-auto flex justify-center items-center"
+        >
+          <p className="text-calcd font-bold text-xl mr-3">VARIANTA VÝPOČTU</p>
+          <AiOutlineDown color="#BD4A63" size={25} />
         </div>
+        {menu && (
+          <ul
+            ref={menuRef}
+            className="grid gap-4 grid-cols-2 grid-rows-1 justify-center items-stretch bg-slate-800"
+          >
+            <Link href="/calculator" onClick={() => handleSelect("detailed")}>
+              <div className="p-2 cursor-pointer justify-items-center rounded-md bg-calcl w-auto flex flex-col">
+                <h1 className="text-black font-bold text-center">PODROBNĚ</h1>
+                <p className="text-black text-center">
+                  sumasumárum dle jednotlivých pracovních dní v týdnu
+                </p>
+              </div>
+            </Link>
+            <Link href="/calculator" onClick={() => handleSelect("quick")}>
+              <div className="p-2 cursor-pointer justify-items-center rounded-md bg-calcl w-auto flex flex-col">
+                <h1 className="text-black font-bold text-center">ORIENTAČNĚ</h1>
+                <p className="text-black text-center">
+                  sumasumárum dle jednoho průměrného pracovního dne
+                </p>
+              </div>
+            </Link>
+          </ul>
+        )}
       </div>
     </div>
   );

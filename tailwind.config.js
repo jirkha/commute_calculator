@@ -11,12 +11,12 @@ module.exports = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        "watch": "url('../app/images/watch.jpeg')",
-        "home_down": "url('../app/images/home_down.jpg')",
+        watch: "url('../app/images/watch.jpeg')",
+        home_down: "url('../app/images/home_down.jpg')",
       },
       colors: {
         calcl: "#8BCEF0",
-        calcd: "#1B262C",
+        calcd: "#EB5671",
       },
     },
   },

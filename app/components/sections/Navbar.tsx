@@ -1,9 +1,8 @@
 "use client";
-import React, {useState} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/app/images/logo.jpg";
-import text from "@/app/images/text.png";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const items: { label: string; page: string }[] = [
@@ -18,62 +17,57 @@ const items: { label: string; page: string }[] = [
 ];
 
 function Navbar() {
-
   const [navbar, setNavbar] = useState<boolean>(false);
+  const navbarRef = useRef<HTMLUListElement | null>(null);
+
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (
+        navbarRef.current &&
+        !navbarRef.current.contains(event.target as Node) &&
+        navbar
+      ) {
+        setNavbar(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [navbar]);
+  
 
   return (
     <div>
       <header>
-        <nav
-          className="flex items-center justify-between shadow mx-auto w-full bg-black
-        md:bg-gradient-to-r from-[#041634] to-neutral-800"
-        >
-          <Image
-            className="ml-8 w-16"
-            src={logo}
-            alt="Logo of the App"
-          ></Image>
-          {/* <Image
-            className="h-16"
-            src={text}
-            alt="Name of the App"
-          ></Image> */}
-          <ul className="hidden text-xl md:flex space-x-8 mr-10   text-slate-100">
-            {items.map(({ label, page }) => (
-              <li
-                className=" hover:text-amber-100 hover:underline decoration-1 cursor-pointer"
-                key={page}
-              >
-                <Link href={page} >
-                  {label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <nav className="flex items-center justify-between shadow mx-auto w-full bg-black">
+          <Image className="w-2/3" src={logo} alt="Logo of the App"></Image>
+
           <div
             onClick={() => setNavbar(!navbar)}
-            className="flex md:hidden mr-10 my-8 z-10 cursor-pointer"
+            className="flex m-4 my-8 z-10 cursor-pointer"
           >
             {navbar ? (
-              <AiOutlineClose color="white" size={30} />
+              <AiOutlineClose color="#4DCBF1" size={50} />
             ) : (
-              <AiOutlineMenu color="white" size={30} />
+              <AiOutlineMenu color="#4DCBF1" size={50} />
             )}
           </div>
         </nav>
         {navbar && (
-          <ul className="flex flex-col justify-center items-center bg-slate-800">
+          <ul
+            ref={navbarRef}
+            className="flex flex-col justify-center items-center bg-slate-800"
+          >
             {items.map(({ label, page }) => (
               <li
                 className="text-slate-100 mt-4 mb-4 cursor-pointer"
                 key={page}
               >
-                <Link
-                  //onClick={() => setNavbar(!navbar)}
-                  href={page}
-                >
-                  {label}
-                </Link>
+                <Link href={page}>{label}</Link>
               </li>
             ))}
           </ul>
