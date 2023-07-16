@@ -21,9 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>Kalkulátor volného času</title>
+        <title>SUMA SUMÁRUM</title>
       </head>
-      <body className="min-h-full w-full">
+      <body className="min-h-full w-full relative">
         <Navbar />
         <CounterContextProvider>
           <GoogleMapsLoader>{children}</GoogleMapsLoader>

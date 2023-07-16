@@ -7,11 +7,11 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const items: { label: string; page: string }[] = [
   {
-    label: "Úvod",
+    label: "ÚVOD",
     page: "/",
   },
   {
-    label: "Kalkulátor",
+    label: "KALKULÁTOR",
     page: "calculator",
   },
 ];
@@ -44,7 +44,7 @@ function Navbar() {
     <div>
       <header>
         <nav className="flex items-center justify-between shadow mx-auto w-full bg-black">
-          <Image className="w-2/3" src={logo} alt="Logo of the App"></Image>
+          <Image className="w-2/3 sm:w-1/3" src={logo} alt="Logo of the App"></Image>
 
           <div
             onClick={() => setNavbar(!navbar)}
@@ -60,11 +60,13 @@ function Navbar() {
         {navbar && (
           <ul
             ref={navbarRef}
-            className="flex flex-col justify-center items-center bg-slate-800"
+            className="flex flex-col justify-center items-center bg-calcl p-16
+            absolute right-0 w-auto z-50
+            [clip-path:polygon(50%_0%,85%_25%,85%_75%,50%_100%,15%_75%,15%_25%)]"
           >
             {items.map(({ label, page }) => (
               <li
-                className="text-slate-100 mt-4 mb-4 cursor-pointer"
+                className="text-black font-bold mt-4 mb-4 cursor-pointer"
                 key={page}
               >
                 <Link href={page}>{label}</Link>

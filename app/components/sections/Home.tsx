@@ -2,12 +2,12 @@ import HomepageGoogleForms from "../forms/HomepageGoogleForms";
 
 export default function Home() {
   return (
-    <div className="bg-watch bg-center bg-cover bg-no-repeat">
+    <div className="bg-watch bg-scroll bg-center bg-cover bg-no-repeat">
       <div
         id="home_up"
         className="flex flex-col lg:flex-row place-items-center lg:items-stretch lg:justify-center"
       >
-        <article className="flex flex-col m-8 max-w-lg opacity-80 gap-2 bg-black p-8">
+        <article className="flex flex-col m-8 w-full max-w-lg opacity-80 gap-2 bg-black p-8">
           <h1 className="text-3xl text-center font-bold text-calcd max-w-md">
             NEŽ
           </h1>
@@ -25,7 +25,7 @@ export default function Home() {
             </p>
           </div>
         </article>
-        <article className="flex flex-col m-8 max-w-lg opacity-80 gap-10 bg-black p-8">
+        <article className="flex flex-col m-8 w-full max-w-lg opacity-80 gap-10 bg-black p-8">
           <h1 className="text-3xl font-bold text-center text-calcd max-w-md">
             SPOČÍTEJ MŮJ VOLNÝ ČAS
           </h1>
@@ -34,10 +34,10 @@ export default function Home() {
       </div>
       <div
         id="home_down"
-        className="flex flex-col lg:flex-row place-items-center lg:items-stretch lg:justify-center mt-96"
+        className="flex flex-col lg:flex-row place-items-center lg:items-stretch lg:justify-center mt-32 lg:mt-96"
       >
         {" "}
-        <article className="flex flex-col m-8 max-w-lg lg:max-w-xl opacity-80 gap-10 bg-black p-8">
+        <article className="flex flex-col m-8 w-full max-w-lg lg:max-w-xl opacity-80 gap-10 bg-black p-8">
           <h1 className="text-3xl text-center font-bold text-calcd">
             JE ROZHODNĚ VÝHODNĚJŠÍ SE REALITĚ PODÍVAT DO OČÍ...
           </h1>
