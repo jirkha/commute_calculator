@@ -9,13 +9,13 @@ interface Props {
 }
 
 
-const googleMapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+const googleMapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "";
 
 const GoogleMapsLoader: React.FC<Props> = ({ children }) => {
   const [libraries]:any = useState(["places"]);
 
     const { isLoaded, loadError } = useJsApiLoader({
-      googleMapsApiKey: "string",
+      googleMapsApiKey,
       libraries,
     });
   
