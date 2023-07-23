@@ -13,6 +13,11 @@ const googleMapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
 const GoogleMapsLoader: React.FC<Props> = ({ children }) => {
   const [libraries]:any = useState(["places"]);
+
+    const { isLoaded, loadError } = useJsApiLoader({
+      googleMapsApiKey: "string",
+      libraries,
+    });
   
   if (googleMapsApiKey === undefined) {
         return (
@@ -24,11 +29,6 @@ const GoogleMapsLoader: React.FC<Props> = ({ children }) => {
           </div>
         );
   }
-
-  const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey,
-    libraries,
-  });
 
   if (loadError) {
     return (

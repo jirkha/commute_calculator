@@ -7,10 +7,6 @@ function Select(props: InputGoogleProps) {
   const kind = props.kind === "current" ? "current" : "planned";
   const selectRef = useRef<HTMLSelectElement>(null);
 
-useEffect(() => {
-  handleSelectChange("");
-}, []); 
-
    const handleSelectChange = (value: string) => {
      const newModes = {
        ...(kind === "current" ? formData.current.connections.modes : {}),
@@ -31,6 +27,10 @@ useEffect(() => {
        },
      }));
    };
+
+   useEffect(() => {
+     handleSelectChange("");
+   }, []); 
 
   return (
     <div>
