@@ -93,7 +93,7 @@ function HomepageGoogleForms() {
         onClick={() => setMenu(!menu)}
         className="p-2 cursor-pointer rounded-md border-4 border-calcd w-auto flex justify-center items-center"
       >
-        <p className="text-calcd font-bold text-xl mr-3">VARIANTA VÝPOČTU</p>
+        <p className="text-calcd font-bold text-2xl mr-3">VARIANTA VÝPOČTU</p>
         <AiOutlineDown color="#BD4A63" size={25} />
       </div>
       {menu && (

@@ -3,7 +3,7 @@ import CommuteCounter from "../components/sections/CommuteCounter";
 
 function Calculator() {
   return (
-    <main className="text-left bg-calcd">
+    <main className="text-left bg-black">
       <CommuteCounter />
     </main>
   );

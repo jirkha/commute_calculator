@@ -2,6 +2,7 @@
 "use client";
 import React, { useState } from "react";
 import { useJsApiLoader } from "@react-google-maps/api";
+import { SiGooglestreetview } from "react-icons/si";
 
 interface Props {
   children: React.ReactNode;
@@ -14,7 +15,14 @@ const GoogleMapsLoader: React.FC<Props> = ({ children }) => {
   const [libraries]:any = useState(["places"]);
   
   if (googleMapsApiKey === undefined) {
-    return <h3>Chyba při načítání Google Maps API</h3>;
+        return (
+          <div className="flex flex-col justify-center place-items-center bg-black mt-12">
+            <h1 className="text-calcd text-4xl">
+              Omlouváme se, ale vyskytla se chyba na straně Google Maps API
+            </h1>
+            <SiGooglestreetview color="#EB5671" size={70} />
+          </div>
+        );
   }
 
   const { isLoaded, loadError } = useJsApiLoader({
@@ -23,13 +31,25 @@ const GoogleMapsLoader: React.FC<Props> = ({ children }) => {
   });
 
   if (loadError) {
-    return <h3>Chyba při načítání Google Maps API</h3>;
+    return (
+      <div className="flex flex-col justify-center place-items-center bg-black mt-12">
+        <h1 className="text-calcd text-4xl">
+          Omlouváme se, ale vyskytla se chyba na straně Google Maps API
+        </h1>
+        <SiGooglestreetview color="#EB5671" size={70} />
+      </div>
+    );
   }
 
   return isLoaded ? (
     <>{children}</>
   ) : (
-    <h3>Prostředí Google API se načítá...</h3>
+    <div className="flex flex-col justify-center place-items-center bg-black mt-12">
+      <h1 className="text-calcl text-4xl">
+        Chvilku strpení prosím, načítá se prostředí Google API ...
+      </h1>
+      <SiGooglestreetview color="#4DCBF3" size={70} />
+    </div>
   );
 };
 

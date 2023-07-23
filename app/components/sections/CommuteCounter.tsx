@@ -10,17 +10,14 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import RadioLevel from "../forms/RadioLevel";
 
-
 export default function CommuteCounter() {
-    const { formData, setFormData } = useContext(CounterContext);
-     const notify = () => toast.warning("Vyplňte prosím všechna pole");  
+  const { formData, setFormData } = useContext(CounterContext);
+  const notify = () => toast.warning("Vyplňte prosím všechna pole");
 
-      const handleFormSubmit = async (event: any) => {
-        event.preventDefault();
-        await submitForm(formData, notify, setFormData, event);
-
-      };
-
+  const handleFormSubmit = async (event: any) => {
+    event.preventDefault();
+    await submitForm(formData, notify, setFormData, event);
+  };
 
   return (
     <section id="commute_counter" className="p-2">
@@ -38,7 +35,6 @@ export default function CommuteCounter() {
           </div>
         </div>
         <div className="flex flex-col md:flex-row md:gap-8 ">
-          
           <CommuteForms />
         </div>
 
@@ -47,7 +43,8 @@ export default function CommuteCounter() {
           className="px-3 py-2 my-2 rounded shadow-xl text-slate-300 bg-[#041634] border-2 border-black"
         >
           Spočítat délku cesty
-        </button><CounterResult />
+        </button>
+        <CounterResult />
       </form>
 
       <ToastContainer />
