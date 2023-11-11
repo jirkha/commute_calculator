@@ -63,21 +63,10 @@ function CommuteGoogleForms({ name }: { [key: string]: string }) {
     <>
       <InputGoogle
         id={100}
-        name={`current.points.residence`}
-        kind="current"
+        name={`${counterType}.points.residence`}
+        kind={counterType}
         point="residence"
-        label="KDE BYDLÍM TEĎ"
-        className="bg-black rounded-xl border-4 border-calcl text-calcl p-2 mb-2 shadow-xl max-w-screen-sm"
-        type="text"
-        placeholder=""
-        required
-      />
-      <InputGoogle
-        id={100}
-        name={`planned.points.residence`}
-        kind="planned"
-        point="residence"
-        label="KAM SE CHCI STĚHOVAT"
+        label={name === "current" ? "Současné bydliště" : "Plánované bydliště"}
         className="bg-black rounded-xl border-4 border-calcl text-calcl p-2 mb-2 shadow-xl max-w-screen-sm"
         type="text"
         placeholder=""
@@ -89,14 +78,16 @@ function CommuteGoogleForms({ name }: { [key: string]: string }) {
         name={`${counterType}.points.workplace`}
         kind={counterType}
         point="workplace"
-        label="KDE PRACUJI"
+        label={
+          name === "current" ? "Současné pracoviště" : "Plánované pracoviště"
+        }
         className="bg-black rounded-xl border-4 border-calcl text-calcl p-2 mb-2 shadow-xl max-w-screen-sm"
         type="text"
         placeholder=""
         required
       />
 
-      {/* <button
+      <button
         type="button"
         className="px-3 py-2 my-2 rounded shadow-xl bg-slate-100 disabled:bg-slate-300 disabled:text-slate-400 border-2 border-black"
         onClick={() => setInput(-1)}
@@ -110,7 +101,7 @@ function CommuteGoogleForms({ name }: { [key: string]: string }) {
         onClick={() => setInput(1)}
       >
         Přidat další bod
-      </button> */}
+      </button>
       {/* {inputsGoogle.map(({ ...inputsGoogle }) => (
         <div key={inputsGoogle.id} className="">
           <InputGoogle {...inputsGoogle} setValue={setValue} />

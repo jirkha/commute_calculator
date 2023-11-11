@@ -32,7 +32,7 @@ export default function RootLayout({
       </head>
       <body
         //style={cairo.style}
-        className="min-h-full w-full relative bg-black"
+        className="min-h-full w-full bg-black"
       >
         <Navbar />
         <CounterContextProvider>

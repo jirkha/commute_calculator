@@ -10,6 +10,7 @@ export const submitForm = async (
 ) => {
   //console.log("event", e);
   //console.log("formData", formData);
+
   if (
     formData.current.points.residence !== "" &&
     formData.planned.points.residence !== "" &&
@@ -20,11 +21,13 @@ export const submitForm = async (
       const updatedFormData = { ...prevFormData };
       updatedFormData.current.connections.connections_list = [];
       updatedFormData.planned.connections.connections_list = [];
+
       return updatedFormData;
     });
 
     const connections: { [key: string]: any } = await GoogleConnections(
-      formData
+      formData,
+      e
     );
     console.log("connections", connections);
 
@@ -52,11 +55,14 @@ export const submitForm = async (
       const current_travel_time = Object.values(connections).reduce(
         (accumulator, connection) => {
           if (connection.name === "current") {
+            if (connection.type === "DRIVING") {
             return (
-              accumulator +
-              connection.response.routes[0].legs[0].duration.value / 60
-            );
-          }
+              accumulator + connection.response.routes[0].legs[0].duration_in_traffic.value / 60 )
+              } else {
+                return (
+                accumulator + connection.response.routes[0].legs[0].duration.value / 60 )
+              }}     
+          
           return accumulator;
         },
         0
@@ -65,18 +71,28 @@ export const submitForm = async (
       const planned_travel_time = Object.values(connections).reduce(
         (accumulator, connection) => {
           if (connection.name === "planned") {
-            return (
-              accumulator +
-              connection.response.routes[0].legs[0].duration.value / 60
-            );
+            if (connection.type === "DRIVING") {
+              return (
+                accumulator +
+                connection.response.routes[0].legs[0].duration_in_traffic
+                  .value /
+                  60
+              );
+            } else {
+              return (
+                accumulator +
+                connection.response.routes[0].legs[0].duration.value / 60
+              );
+            }
           }
+
           return accumulator;
         },
         0
       );
 
-      updatedFormData.current.connections.total_time = current_travel_time;
-      updatedFormData.planned.connections.total_time = planned_travel_time;
+      updatedFormData.current.times.travel_time = current_travel_time;
+      updatedFormData.planned.times.travel_time = planned_travel_time;
 
       //currentTotalTime
       //   let hours = Math.floor(current_travel_time / 3600);
@@ -117,15 +133,32 @@ export const submitForm = async (
         .padStart(2, "0")
         .slice(0, 2)}`;
 
-      updatedFormData.current.times.travel_time = travel_time_current;
-      updatedFormData.planned.times.travel_time = travel_time_planned;
+      updatedFormData.current.connections.total_time = travel_time_current;
+      updatedFormData.planned.connections.total_time = travel_time_planned;
 
       freeTimeCounter(updatedFormData, e);
+
+      updatedFormData.general.result = true;
 
       return updatedFormData;
     });
   } else {
-    console.warn("Nejsou vyplněna všechna pole!");
+    console.warn(
+      "formData.current.points.residence",
+      formData.current.points.residence
+    );
+    console.warn(
+      "formData.planned.points.residence",
+      formData.planned.points.residence
+    );
+    console.warn(
+      "formData.current.points.workplace",
+      formData.current.points.workplace
+    );
+    console.warn(
+      "formData.planned.points.workplace",
+      formData.planned.points.workplace
+    );
     notify();
   }
   console.log("formData", formData);

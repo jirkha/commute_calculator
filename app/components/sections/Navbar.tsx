@@ -57,7 +57,7 @@ function Navbar() {
             ></Image>
             <a
               href="/"
-              className="text-2xl min-[320px]:text-4xl sm:text-6xl xl:text-7xl text-calcl font-bold"
+              className="text-2xl min-[320px]:text-4xl sm:text-6xl text-calcl font-bold"
             >
               SUMA SUMÁRUM
             </a>
@@ -67,9 +67,9 @@ function Navbar() {
             className="flex m-4 my-8 z-10 cursor-pointer"
           >
             {navbar ? (
-              <AiOutlineClose color="#4DCBF1" size={50} />
+              <AiOutlineClose color="#4DCBF1" size={40} />
             ) : (
-              <AiOutlineMenu color="#4DCBF1" size={50} />
+              <AiOutlineMenu color="#4DCBF1" size={40} />
             )}
           </div>
         </nav>
@@ -97,8 +97,8 @@ function Navbar() {
         )}
         <hr className="border-black md:border-neutral-800"></hr>
         <div className="w-full mx-auto bg-amber-400">
-          <p className="p-3 text-xl font-bold tracking-wide text-center">
-            Webová stránka je v přípravě
+          <p className="p-2 text-xl font-bold tracking-wide text-center">
+            Podrobný výpočet je v přípravě
           </p>
         </div>
       </header>

@@ -8,7 +8,6 @@ import GoogleMap from "../content/GoogleMap";
 import { CounterContext } from "../contexts/CounterContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import RadioLevel from "../forms/RadioLevel";
 
 export default function CommuteCounter() {
   const { formData, setFormData } = useContext(CounterContext);
@@ -16,14 +15,17 @@ export default function CommuteCounter() {
 
   const handleFormSubmit = async (event: any) => {
     event.preventDefault();
+    console.log('event', event)
     await submitForm(formData, notify, setFormData, event);
   };
 
   return (
-    <section id="commute_counter" className="p-2">
-      <RadioLevel />
-      <form onSubmit={handleFormSubmit}>
-        <div className="flex flex-col md:flex-row md:gap-8 ">
+    <section id="commute_counter" className="flex justify-center p-2">
+      <form
+        className="flex flex-col w-full md:w-3/4 lg:w-1/2"
+        onSubmit={handleFormSubmit}
+      >
+        {/* <div className="flex flex-col md:flex-row md:gap-8 ">
           <div>
             <CommuteGoogleForms name="current" />
           </div>
@@ -34,15 +36,26 @@ export default function CommuteCounter() {
             <GoogleMap />
           </div>
         </div>
-        <div className="flex flex-col md:flex-row md:gap-8 ">
+        <div className="flex flex-col md:flex-row md:gap-8 "> */}
+        {formData.general.detail_level === "quick" ? (
           <CommuteForms />
-        </div>
+        ) : formData.general.detail_level === "detailed" ? (
+          <p className="text-calcl text-2xl text-center p-6 pt-11">
+            Omlouváme se, ale podrobný výpočet zatím není k dispozici
+          </p>
+        ) : (
+          <p className="text-calcl text-2xl text-center p-6 pt-11">
+            Nejprve prosím vyberte variantu výpočtu
+          </p>
+        )}
+
+        {/* </div> */}
 
         <button
           type="submit"
-          className="px-3 py-2 my-2 rounded shadow-xl text-slate-300 bg-[#041634] border-2 border-black"
+          className="text-center bg-calcd w-full h-14 px-4 my-8 text-2xl font-semibold rounded-xl border-4 border-calcd text-black hover:text-red-800"
         >
-          Spočítat délku cesty
+          SUMA SUMÁRUM
         </button>
         <CounterResult />
       </form>

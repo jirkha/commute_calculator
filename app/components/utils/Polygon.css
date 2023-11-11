@@ -1,0 +1,13 @@
+.polygon-container {
+    width: 300px;
+    height: 220px;
+}
+
+.polygon {
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 220px;
+    clip-path: polygon(50% 0%, 85% 25%, 85% 75%, 50% 100%, 15% 75%, 15% 25%);
+    background-color: #4DCBF3;
+}

@@ -51,7 +51,9 @@ function HomepageGoogleForms() {
         kind="current"
         point="residence"
         label="KDE BYDLÍM TEĎ"
-        className="rounded p-2 shadow-xl"
+        className="flex flex-col items-center bg-black w-full"
+        classNameInputDiv="flex flex-col w-full"
+        classNameInput="bg-calcl w-full rounded-xl text-center font-bold p-2 mb-2 shadow-xl w-full h-14"
         type="text"
         placeholder=""
         required
@@ -62,7 +64,9 @@ function HomepageGoogleForms() {
         kind="planned"
         point="residence"
         label="KAM SE CHCI STĚHOVAT"
-        className="rounded p-2 shadow-xl"
+        className="flex flex-col items-center bg-black w-full"
+        classNameInputDiv="flex flex-col w-full"
+        classNameInput="bg-calcl w-full rounded-xl text-center font-bold p-2 mb-2 shadow-xl w-full h-14"
         type="text"
         placeholder=""
         required
@@ -90,6 +94,7 @@ function HomepageGoogleForms() {
           required
         /> */}
       <div
+        onMouseEnter={() => setMenu(!menu)}
         onClick={() => setMenu(!menu)}
         className="p-2 cursor-pointer rounded-md border-4 border-calcd w-auto flex justify-center items-center"
       >
@@ -99,6 +104,7 @@ function HomepageGoogleForms() {
       {menu && (
         <ul
           ref={menuRef}
+          onMouseLeave={() => setMenu(!menu)}
           className="grid gap-4 grid-rows-2 grid-cols-1 sm:grid-cols-2 sm:grid-rows-1 rounded-md p-2 border-4 border-calcd justify-center bg-slate-800 absolute top-full left-0"
         >
           <Link href="/calculator" onClick={() => handleSelect("detailed")}>

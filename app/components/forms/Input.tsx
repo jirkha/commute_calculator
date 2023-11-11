@@ -1,8 +1,8 @@
 import React, {useState, ChangeEvent} from "react";
 
 export interface InputProps {
-  // id?: string;
-  className: string;
+  
+  classNameInput: string;
   name: string;
   label?: string;
   type?: string;
@@ -17,11 +17,16 @@ export interface InputProps {
 }
 
 export default function Input(props: InputProps) {
-
   return (
-    <div className="flex flex-col">
-      <label className="text-2xl text-calcl">{props.label}</label>
-      <input {...props} />
+    <div className="flex flex-col items-center">
+      <label className="text-2xl font-semibold text-calcd">{props.label}</label>
+      <input
+        name={props.name}
+        type={props.type}
+        placeholder={props.placeholder}
+        required={props.required}
+        className={props.classNameInput}
+      />
     </div>
   );
 }

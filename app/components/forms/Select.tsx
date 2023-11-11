@@ -33,20 +33,22 @@ function Select(props: InputGoogleProps) {
    }, []); 
 
   return (
-    <div>
-      <select
-        name="transport"
-        className="rounded p-2 mb-2 shadow-xl max-w-screen-sm"
-        onChange={(e) => handleSelectChange(e.target.value)}
-        ref={selectRef}
-        defaultValue=""
-        required
-      >
-        <option value="">Čím pojedu...</option>
-        <option value="TRANSIT">Veřejná doprava</option>
-        <option value="DRIVING">Automobil</option>
-      </select>
-    </div>
+    <select
+      name="transport"
+      className="text-center bg-black hover:bg-slate-800 w-full h-14 px-4 text-xl font-semibold rounded-xl border-4 border-calcl text-calcd mb-2"
+      onChange={(e) => handleSelectChange(e.target.value)}
+      ref={selectRef}
+      defaultValue=""
+      required
+    >
+      <option value="" className="">
+        {kind === "current"
+          ? "JAK JEZDÍM DO PRÁCE"
+          : "JAK BUDU JEZDIT DO PRÁCE"}
+      </option>
+      <option value="TRANSIT">Veřejná doprava</option>
+      <option value="DRIVING">Automobil</option>
+    </select>
   );
 }
 

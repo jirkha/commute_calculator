@@ -11,10 +11,13 @@ export interface InputGoogleProps {
   kind: string;
   point: string;
   className: string;
+  classNameInputDiv: string;
+  classNameInput: string;
   label: string;
   type: string;
   placeholder: string;
   required?: boolean;
+  value?: string | undefined;
 }
 
 export default function InputGoogle(props: InputGoogleProps) {
@@ -26,6 +29,8 @@ export default function InputGoogle(props: InputGoogleProps) {
   const { formData, setFormData } = useContext(CounterContext);
   const kind = props.kind === "current" ? "current" : "planned";
   const point = props.point;
+  const className = props.className;
+  const classNameInput = props.classNameInput;
 
   const handleAutocompleteLoad = (
     autocomplete: google.maps.places.Autocomplete
@@ -59,44 +64,91 @@ export default function InputGoogle(props: InputGoogleProps) {
         general: {
           ...formData.general,
           actual_point: place.geometry?.location,
-        }        
+        },
       });
+
+      if (
+        //formData.planned.points.workplace === "" &&
+        props.kind === "current" &&
+        props.point === "workplace"
+      ) {
+        setFormData({
+          ...formData,
+          current: {
+            ...formData.current,
+            points: {
+              ...formData.current.points,
+              workplace: place,
+            },
+          },
+          planned: {
+            ...formData.planned,
+            points: {
+              ...formData.planned.points,
+              workplace: place,
+            },
+          },
+        });
+        console.log("second")
+      }
     }
   };
 
   const handleInputClick = () => {
     if (autocomplete !== null) {
+      setInputValue("");
+      setFormData({
+        ...formData,
+        [kind]: {
+          ...formData[kind],
+          points: {
+            ...formData[kind].points,
+            [point]: "",
+          },
+        },
+      });
       autocomplete.setTypes(["geocode"]);
     }
   };
+
   const options = {
     types: ["geocode"],
     componentRestrictions: { country: "cz" },
   };
 
   return (
-    <div className="">
-      <Autocomplete
-        onLoad={(autocomplete) => handleAutocompleteLoad(autocomplete)} // onLoad událost, která se spustí po načtení komponenty Autocomplete
-        onPlaceChanged={handlePlaceChanged} // onPlaceChanged událost, která se spustí po výběru místa v Autocomplete
-        options={options}
-      >
-        <Input
-          {...props}
-          value={
-            inputValue !== ""
-              ? inputValue.toString()
-              : (point === "residence" || point === "workplace") &&
-                (typeof formData[kind]?.points[point] !== "string" &&
-                formData[kind]?.points[point]?.formatted_address !== undefined
-                  ? formData[kind]?.points[point]?.formatted_address.toString()
-                  : "")
-          }
-          onChange={(e) => setInputValue(e.target.value)}
-          onClick={handleInputClick}
-        />
-        {/* Propojení vstupu uživatele s hodnotou v stavové proměnné */}
-      </Autocomplete>
+    <div className={className}>
+      <div className={props.classNameInputDiv}>
+        <Autocomplete
+          onLoad={(autocomplete) => handleAutocompleteLoad(autocomplete)} // onLoad událost, která se spustí po načtení komponenty Autocomplete
+          onPlaceChanged={handlePlaceChanged} // onPlaceChanged událost, která se spustí po výběru místa v Autocomplete
+          options={options}
+        >
+          <Input
+            name={props.name}
+            classNameInput={props.classNameInput}
+            label={props.label}
+            type={props.type}
+            placeholder={props.placeholder}
+            required={props.required}
+            value={
+              inputValue !== ""
+                ? inputValue.toString()
+                : (point === "residence" || point === "workplace") &&
+                  (typeof formData[kind]?.points[point] !== "string" &&
+                  formData[kind]?.points[point]?.formatted_address !== undefined
+                    ? formData[kind]?.points[
+                        point
+                      ]?.formatted_address.toString()
+                    : "")
+            }
+            onChange={(e) => setInputValue(e.target.value)}
+            onClick={handleInputClick}
+          />
+          {/* Propojení vstupu uživatele s hodnotou v stavové proměnné */}
+        </Autocomplete>
+      </div>
+
       {props.point !== "workplace" && props.id !== 200 && props.id !== 201 && (
         <Select {...props} />
       )}

@@ -8,15 +8,15 @@ interface Points {
   counter: number;
 };
 interface Connections {
-  connections_list: [] |"" | any;
-  total_time: number;
+  connections_list: [] | "" | any;
+  total_time: string;
   modes: object;
 };
 interface Times {
   start_work: number;
   end_work: number;
   morning_preparation: number;
-  travel_time: number | string;
+  travel_time: number;
   sleep_time: number;
   wakeup_time: number;
   free_time: number;
@@ -41,7 +41,8 @@ export interface FormData {
   general: {
     actual_point: Center | google.maps.LatLng | undefined;
     detail_level: string;
-    free_time_difference: string;
+    result: boolean;
+    free_time_difference: number;
   };
 }
 
@@ -60,11 +61,11 @@ const defaultFormData: FormData = {
     },
     connections: {
       connections_list: "",
-      total_time: 0,
+      total_time: "",
       modes: {},
     },
     times: {
-      start_work: 0,
+      start_work: 510,
       end_work: 0,
       morning_preparation: 0,
       travel_time: 0,
@@ -82,7 +83,7 @@ const defaultFormData: FormData = {
     },
     connections: {
       connections_list: "",
-      total_time: 0,
+      total_time: "",
       modes: {},
     },
     times: {
@@ -98,7 +99,8 @@ const defaultFormData: FormData = {
   general: {
     actual_point: undefined,
     detail_level: "",
-    free_time_difference: "",
+    result: false,
+    free_time_difference: 0,
   },
   // actual_point: {
   //   lat: 50.0879,

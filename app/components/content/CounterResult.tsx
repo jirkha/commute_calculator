@@ -1,4 +1,3 @@
-"use client";
 import React, { useContext, useState } from "react";
 import { CounterContext } from "../contexts/CounterContext";
 
@@ -27,9 +26,9 @@ function CounterResult() {
           Pracoviště: {formData.current.points.workplace?.formatted_address}
         </li>
       )}
-      {formData.current.times.travel_time !== "" && (
+      {formData.current.connections.total_time !== "" && (
         <li className="text-sm text-yellow-100">
-          Doba jízdy: {formData.current.times.travel_time} hod.
+          Doba jízdy: {formData.current.connections.total_time} hod.
         </li>
       )}
 
@@ -50,9 +49,9 @@ function CounterResult() {
           Pracoviště: {formData.planned.points.workplace?.formatted_address}
         </li>
       )}
-      {formData.planned.times.travel_time !== "" && (
+      {formData.planned.connections.total_time !== "" && (
         <li className="text-sm text-yellow-100">
-          Doba jízdy: {formData.planned.times.travel_time} hod.
+          Doba jízdy: {formData.planned.connections.total_time} hod.
         </li>
       )}
     </div>

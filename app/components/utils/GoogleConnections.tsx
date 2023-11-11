@@ -1,13 +1,14 @@
 import { FormData } from "../contexts/CounterContext";
+import { getDate } from "./GetDate";
 
-export async function GoogleConnections(formData: FormData) {
-
+export async function GoogleConnections(formData: FormData, e: any) {
   let CONNECTIONS: {
     id: number;
     name: string;
     origin: string;
     destination: string;
     type: google.maps.TravelMode;
+    drivingOptions?: google.maps.DrivingOptions;
   }[] = [];
 
   Object.entries(formData)
@@ -91,8 +92,11 @@ export async function GoogleConnections(formData: FormData) {
         }
       }
     });
+
   const directionsService = new google.maps.DirectionsService();
   const directionsRequests: Promise<any>[] = [];
+  const work_time: string = e.target.elements.start_work.value;
+  const date = getDate(work_time);
 
   for (const connection of CONNECTIONS) {
     const request = {
@@ -100,6 +104,19 @@ export async function GoogleConnections(formData: FormData) {
       destination: connection.destination,
       travelMode: connection.type,
     };
+
+    // Přidání specifického času odjezdu pro Travel Mode
+    if (connection.type === google.maps.TravelMode.TRANSIT) {
+      (request as any).transitOptions = {
+        arrivalTime: new Date(date),
+      };
+    }
+    if (connection.type === google.maps.TravelMode.DRIVING) {
+      (request as any).drivingOptions = {
+        departureTime: new Date(date),
+        trafficModel: "pessimistic",
+      };
+    }
 
     directionsRequests.push(
       new Promise((resolve, reject) => {
@@ -128,11 +145,10 @@ export async function GoogleConnections(formData: FormData) {
         response: response,
       };
     });
-// console.log("formattedConnections", formattedConnections);
+    // console.log("formattedConnections", formattedConnections);
     return formattedConnections;
   } catch (error) {
     console.error("Error retrieving directions:", error);
     return [];
   }
-  
 }
