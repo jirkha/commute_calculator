@@ -51,7 +51,9 @@ function CommuteGoogleForms({ name }: { [key: string]: string }) {
         kind={counterType}
         point="other"
         label={`Bod na cestě ${i + 1}`}
-        className="rounded p-2 mb-2 shadow-xl max-w-screen-sm"
+        className="flex flex-col items-center bg-black w-full"
+        classNameInputDiv="flex flex-col w-full"
+        classNameInput="bg-calcl w-full rounded-xl text-center font-bold p-2 mb-2 shadow-xl w-full h-14"
         type="text"
         placeholder=""
         required
@@ -67,7 +69,9 @@ function CommuteGoogleForms({ name }: { [key: string]: string }) {
         kind="current"
         point="residence"
         label="KDE BYDLÍM TEĎ"
-        className="bg-black rounded-xl border-4 border-calcl text-calcl p-2 mb-2 shadow-xl max-w-screen-sm"
+        className="flex flex-col items-center bg-black w-full"
+        classNameInputDiv="flex flex-col w-full"
+        classNameInput="bg-calcl w-full rounded-xl text-center font-bold p-2 mb-2 shadow-xl w-full h-14"
         type="text"
         placeholder=""
         required
@@ -78,7 +82,9 @@ function CommuteGoogleForms({ name }: { [key: string]: string }) {
         kind="planned"
         point="residence"
         label="KAM SE CHCI STĚHOVAT"
-        className="bg-black rounded-xl border-4 border-calcl text-calcl p-2 mb-2 shadow-xl max-w-screen-sm"
+        className="flex flex-col items-center bg-black w-full"
+        classNameInputDiv="flex flex-col w-full"
+        classNameInput="bg-calcl w-full rounded-xl text-center font-bold p-2 mb-2 shadow-xl w-full h-14"
         type="text"
         placeholder=""
         required
@@ -90,7 +96,9 @@ function CommuteGoogleForms({ name }: { [key: string]: string }) {
         kind={counterType}
         point="workplace"
         label="KDE PRACUJI"
-        className="bg-black rounded-xl border-4 border-calcl text-calcl p-2 mb-2 shadow-xl max-w-screen-sm"
+        className="flex flex-col items-center bg-black w-full"
+        classNameInputDiv="flex flex-col w-full"
+        classNameInput="bg-calcl w-full rounded-xl text-center font-bold p-2 mb-2 shadow-xl w-full h-14"
         type="text"
         placeholder=""
         required
