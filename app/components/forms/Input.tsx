@@ -23,6 +23,7 @@ export default function Input(props: InputProps) {
       <input
         name={props.name}
         type={props.type}
+        value={props.value}
         placeholder={props.placeholder}
         required={props.required}
         className={props.classNameInput}

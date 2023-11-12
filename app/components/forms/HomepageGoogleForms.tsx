@@ -53,7 +53,7 @@ function HomepageGoogleForms() {
         label="KDE BYDLÍM TEĎ"
         className="flex flex-col items-center bg-black w-full"
         classNameInputDiv="flex flex-col w-full"
-        classNameInput="bg-calcl w-full rounded-xl text-center font-bold p-2 mb-2 shadow-xl w-full h-14"
+        classNameInput="bg-calcl w-full rounded-xl text-center font-bold p-2 mb-2 shadow-xl w-full h-12"
         type="text"
         placeholder=""
         required
@@ -66,7 +66,7 @@ function HomepageGoogleForms() {
         label="KAM SE CHCI STĚHOVAT"
         className="flex flex-col items-center bg-black w-full"
         classNameInputDiv="flex flex-col w-full"
-        classNameInput="bg-calcl w-full rounded-xl text-center font-bold p-2 mb-2 shadow-xl w-full h-14"
+        classNameInput="bg-calcl w-full rounded-xl text-center font-bold p-2 mb-2 shadow-xl w-full h-12"
         type="text"
         placeholder=""
         required
