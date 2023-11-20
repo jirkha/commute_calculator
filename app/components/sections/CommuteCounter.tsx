@@ -15,8 +15,14 @@ export default function CommuteCounter() {
 
   const handleFormSubmit = async (event: any) => {
     event.preventDefault();
-    console.log('event', event)
+    //console.log('event', event)
     await submitForm(formData, notify, setFormData, event);
+    const targetElement = document.getElementById("result");
+    (targetElement as any).scrollIntoView({
+      behavior: "smooth", 
+      block: "start",
+      inline: "start",
+    });
   };
 
   return (
@@ -38,11 +44,24 @@ export default function CommuteCounter() {
         </div>
         <div className="flex flex-col md:flex-row md:gap-8 "> */}
         {formData.general.detail_level === "quick" ? (
-          <CommuteForms />
+          <>
+            <CommuteForms />
+            <button
+              type="submit"
+              className="text-center w-full h-14 px-4 my-8 text-2xl font-bold rounded-xl border-4 border-calcd text-calcd hover:text-black hover:bg-calcd"
+            >
+              SUMA SUMÁRUM
+            </button>
+          </>
         ) : formData.general.detail_level === "detailed" ? (
-          <p className="text-calcl text-2xl text-center p-6 pt-11">
-            Omlouváme se, ale podrobný výpočet zatím není k dispozici
-          </p>
+          <>
+            <p className="text-calcl text-2xl text-center p-6 pt-11">
+              Omlouváme se, ale podrobný výpočet zatím není k dispozici.
+            </p>
+            <p className="text-calcl text-2xl text-center p-6">
+              Zvolte prosím ORIENTANČÍ VÝPOČET.
+            </p>
+          </>
         ) : (
           <p className="text-calcl text-2xl text-center p-6 pt-11">
             Nejprve prosím vyberte variantu výpočtu
@@ -51,12 +70,6 @@ export default function CommuteCounter() {
 
         {/* </div> */}
 
-        <button
-          type="submit"
-          className="text-center bg-calcd w-full h-14 px-4 my-8 text-2xl font-semibold rounded-xl border-4 border-calcd text-black hover:text-red-800"
-        >
-          SUMA SUMÁRUM
-        </button>
         <CounterResult />
       </form>
 

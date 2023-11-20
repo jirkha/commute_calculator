@@ -46,5 +46,6 @@ export function freeTimeCounter(updatedFormData: MyFormData, e: any) {
   updatedFormData.current.times.wakeup_time = wakeup_time;
   updatedFormData.current.times.start_work = start_work;
   updatedFormData.current.times.end_work = end_work;
+  updatedFormData.current.times.work_duration = work_duration;
   updatedFormData.general.free_time_difference = free_time_difference
 }

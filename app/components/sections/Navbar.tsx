@@ -95,12 +95,6 @@ function Navbar() {
             ))}
           </ul>
         )}
-        <hr className="border-black md:border-neutral-800"></hr>
-        <div className="w-full mx-auto bg-amber-400">
-          <p className="p-2 text-xl font-bold tracking-wide text-center">
-            Podrobný výpočet je v přípravě
-          </p>
-        </div>
       </header>
     </div>
   );

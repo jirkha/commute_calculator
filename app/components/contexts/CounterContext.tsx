@@ -20,6 +20,7 @@ interface Times {
   sleep_time: number;
   wakeup_time: number;
   free_time: number;
+  work_duration: number
 };
 
 interface Center {
@@ -72,6 +73,7 @@ const defaultFormData: FormData = {
       sleep_time: 0,
       wakeup_time: 0,
       free_time: 0,
+      work_duration: 0,
     },
   },
   planned: {
@@ -94,11 +96,12 @@ const defaultFormData: FormData = {
       sleep_time: 0,
       wakeup_time: 0,
       free_time: 0,
+      work_duration: 0,
     },
   },
   general: {
     actual_point: undefined,
-    detail_level: "",
+    detail_level: "quick",
     result: false,
     free_time_difference: 0,
   },

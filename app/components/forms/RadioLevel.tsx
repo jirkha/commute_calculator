@@ -67,8 +67,9 @@ function RadioLevel() {
         </div>
         <div
           className={
-            not
+            formData.general.detail_level === "detailed" ? active : not
           }
+          onClick={(e) => handleSelectChange("detailed")}
         >
           <h2>PODROBNÝ VÝPOČET</h2>
         </div>
