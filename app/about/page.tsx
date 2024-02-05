@@ -20,7 +20,7 @@ function About() {
             městského plánování.
           </p>
           <p className="text-lg text-white text-center font-bold">
-            Zatímco Jirka se začal v roce 2022 jako samouk věnovat programování, Vlasta se mnohem aktivněji od téhož roku zapojil
+            Zatímco Jirka se začal v roce 2021 věnovat programování webových aplikací, Vlasta se mnohem aktivněji od téhož roku zapojil
             do tvůrčí práce (grafika, webové stránky, časopis pro zaměstnance).
             A tím se naše síly spojily a začali jsme společně vyvíjet aplikaci
             SUMASUMÁRUM, která je první vlaštovkou naší spolupráce:-)
