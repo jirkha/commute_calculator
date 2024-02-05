@@ -1,6 +1,6 @@
-*** DESCRIPTION ***
+## DESCRIPTION
 
-COMMUTE CALCULATOR
+**COMMUTE CALCULATOR**
 
 Web application made in ReactJS used to calculate free time and other impacts of moving from the city to its surroundings.
 
@@ -13,7 +13,7 @@ Do you want to spend 8 hours longer on transport each week and lose 8 hours of f
 Our app will show you what you may have to sacrifice and it's up to you whether you think more about your new home or take all the risks at the expense of your valuable free time.
 
 
-*** DEPENDENCIES / LIBRARIES ***
+## DEPENDENCIES / LIBRARIES
 
 node,
 react,
@@ -25,5 +25,6 @@ react-google-autocomplete,
 react-icons,
 react-toastify
 
-*** CONTACT ***
+## CONTACT
+
 https://www.jirivecko.cz/
