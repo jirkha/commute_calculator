@@ -1,6 +1,6 @@
-# Welcome to the Trial Version of Our App "SUMA SUMÁRUM"
+# Welcome to the Trial Version of Our App "SUMA SUMÁRUM" 🌆 🚅 🏢 🚗 🏠
 
-Thank you for exploring our application! This is a trial version that allows you to experience some of the exciting features we are developing. Please keep in mind that this version is a work in progress and we appreciate your feedback.
+Thank you for exploring 🚀 our application! This is a trial version that allows you to experience some of the exciting features we are developing. Please keep in mind 💡that this version is a work in progress and we appreciate your feedback.
 
 ## INTRODUCTION
 
@@ -8,15 +8,15 @@ A web application that calculates free time and other impacts of moving from the
 
 ## DEPENDENCIES / LIBRARIES
 
-node.js,
-react,
-tailwindcss,
-typescript,
-react-google-maps/api,
-next,
-react-google-autocomplete,
-react-icons,
-react-toastify
+- node.js,
+- react,
+- tailwindcss,
+- typescript,
+- react-google-maps/api,
+- next,
+- react-google-autocomplete,
+- react-icons,
+- react-toastify
 
 ## DESCRIPTION
 
