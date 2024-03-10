@@ -59,9 +59,11 @@ function CommuteForms() {
     "bg-black hover:bg-slate-800 w-full rounded-xl border-4 border-calcl text-calcd text-center p-2 mb-2 shadow-xl w-full h-14";
 
   // *** INPUTS *** //
-  const classNameInput="bg-black hover:bg-slate-800 md:px-16 py-2 m-2 text-calcd"
+  const classNameInput =
+    "bg-black hover:bg-slate-800 md:px-16 py-2 m-2 text-calcd min-h-auto";
+
   const classNameInputDiv =
-    "flex justify-center w-full rounded-xl border-4 border-calcl mb-2 h-14 shadow-xl";
+    "flex justify-center w-full rounded-xl border-4 border-calcl mb-2 h-14 shadow-xl min-h-auto";
   return (
     <>
       <div className="flex flex-col w-full">
