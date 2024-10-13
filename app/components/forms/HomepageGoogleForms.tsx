@@ -44,16 +44,16 @@ function HomepageGoogleForms() {
   };
 
   return (
-    <div className="relative grid opacity-90 gap-5 bg-black items-center">
+    <div className="relative p-4 border-4 border-black rounded-3xl grid gap-5 bg-white items-center">
       <InputGoogle
         id={200}
         name="current.points.residence"
         kind="current"
         point="residence"
         label="KDE BYDLÍM TEĎ"
-        className="flex flex-col items-center bg-black w-full"
+        className="flex flex-col items-center bg-white w-full"
         classNameInputDiv="flex flex-col w-full"
-        classNameInput="bg-calcl w-full rounded-xl text-center font-bold p-2 mb-2 shadow-xl w-full h-12"
+        classNameInput="bg-calcd border-4 border-black w-full rounded-xl text-center font-bold p-2 mb-2 shadow-xl w-full h-12"
         type="text"
         placeholder=""
         required
@@ -64,9 +64,9 @@ function HomepageGoogleForms() {
         kind="planned"
         point="residence"
         label="KAM SE CHCI STĚHOVAT"
-        className="flex flex-col items-center bg-black w-full"
+        className="flex flex-col items-center bg-white w-full"
         classNameInputDiv="flex flex-col w-full"
-        classNameInput="bg-calcl w-full rounded-xl text-center font-bold p-2 mb-2 shadow-xl w-full h-12"
+        classNameInput="bg-calcd border-4 border-black w-full rounded-xl text-center font-bold p-2 mb-2 shadow-xl w-full h-12"
         type="text"
         placeholder=""
         required
@@ -96,30 +96,30 @@ function HomepageGoogleForms() {
       <div
         onMouseEnter={() => setMenu(!menu)}
         onClick={() => setMenu(!menu)}
-        className="p-2 cursor-pointer rounded-md border-4 border-calcd w-auto flex justify-center items-center"
+        className="p-2 cursor-pointer border-2 border-black rounded-xl bg-black w-auto flex justify-center items-center"
       >
-        <p className="text-calcd font-bold text-2xl mr-3">VARIANTA VÝPOČTU</p>
-        <AiOutlineDown color="#BD4A63" size={25} />
+        <p className="text-white font-bold text-2xl mr-3">VARIANTA VÝPOČTU</p>
+        <AiOutlineDown color="white" size={25} />
       </div>
       {menu && (
         <ul
           ref={menuRef}
           onMouseLeave={() => setMenu(!menu)}
-          className="grid gap-4 grid-rows-2 grid-cols-1 sm:grid-cols-2 sm:grid-rows-1 rounded-md p-2 border-4 border-calcd justify-center bg-slate-800 absolute top-full left-0"
+          className="grid gap-4 grid-rows-2 grid-cols-1 sm:grid-cols-2 sm:grid-rows-1 rounded-md p-2 justify-center bg-black absolute top-full left-0"
         >
           <Link href="/calculator" onClick={() => handleSelect("detailed")}>
-            <div className="p-2 cursor-pointer justify-items-center rounded-md bg-calcl w-auto h-full">
-              <h1 className="text-black font-bold text-center">PODROBNĚ</h1>
-              <p className="text-black text-center hyphens-auto">
-                Suma sumárum dle jednotlivých pracovních dní v týdnu
+            <div className="p-2 cursor-pointer justify-items-center border-4 border-white rounded-md bg-black w-auto h-full">
+              <h1 className="text-calcd font-bold text-center">PODROBNĚ</h1>
+              <p className="text-white text-center hyphens-auto">
+                dle jednotlivých pracovních dní v týdnu
               </p>
             </div>
           </Link>
           <Link href="/calculator" onClick={() => handleSelect("quick")}>
-            <div className="p-2 cursor-pointer justify-items-center rounded-md bg-calcl w-auto h-full">
-              <h1 className="text-black font-bold text-center">ORIENTAČNĚ</h1>
-              <p className="text-black text-center">
-                Suma sumárum dle jednoho průměrného pracovního dne
+            <div className="p-2 cursor-pointer justify-items-center border-4 border-white rounded-md bg-black w-auto h-full">
+              <h1 className="text-calcd font-bold text-center">ORIENTAČNĚ</h1>
+              <p className="text-white text-center">
+                dle jednoho průměrného pracovního dne
               </p>
             </div>
           </Link>

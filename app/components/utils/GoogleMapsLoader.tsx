@@ -44,11 +44,11 @@ const GoogleMapsLoader: React.FC<Props> = ({ children }) => {
   return isLoaded ? (
     <>{children}</>
   ) : (
-    <div className="flex flex-col justify-center place-items-center bg-black mt-12">
-      <h1 className="text-calcl text-4xl">
+    <div className="flex flex-col justify-center place-items-center bg-white mt-12">
+      <h1 className="text-calcd text-4xl">
         Chvilku strpení prosím, načítá se prostředí Google API ...
       </h1>
-      <SiGooglestreetview color="#4DCBF3" size={70} />
+      <SiGooglestreetview color="#EB5671" size={70} />
     </div>
   );
 };
