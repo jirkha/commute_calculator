@@ -6,7 +6,7 @@ import linkedIn from "@/app/images/LinkedIn.png";
 
 function About() {
   return (
-    <div className="flex flex-col md:flex-row justify-center items-center space-x-4 p-4 shadow-lg bg-zinc-400">
+    <div className="flex flex-col md:flex-row justify-center md:justify-start items-center space-x-4 p-4 shadow-lg bg-zinc-400">
       <div className="flex justify-center items-center">
         <Image src={portrait} width={175} height={175} alt="Portrait" />
       </div>
