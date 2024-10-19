@@ -17,12 +17,14 @@ export default function CommuteCounter() {
     event.preventDefault();
     //console.log('event', event)
     await submitForm(formData, notify, setFormData, event);
-    const targetElement = document.getElementById("result");
-    (targetElement as any).scrollIntoView({
-      behavior: "smooth", 
-      block: "start",
-      inline: "start",
-    });
+    setTimeout(() => {
+      const targetElement = document.getElementById("result");
+      (targetElement as any).scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "start",
+      });
+    }, 200); // 500 ms = půl sekundy
   };
 
   return (

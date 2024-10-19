@@ -44,7 +44,7 @@ const GoogleMapsLoader: React.FC<Props> = ({ children }) => {
   return isLoaded ? (
     <>{children}</>
   ) : (
-    <div className="flex flex-col justify-center place-items-center">
+    <div className="flex flex-col justify-center place-items-center mt-12">
       <h1 className="text-calcl text-6xl text-center">
         Chvilku strpení prosím, načítá se prostředí Google API ...
       </h1>

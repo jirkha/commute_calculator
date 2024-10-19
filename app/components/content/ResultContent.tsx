@@ -10,7 +10,7 @@ function ResultContent({ children }: { children: React.ReactNode }) {
 
   if (formData.general.result === false)
     return (
-      <div className="flex flex-col items-center">
+      <div id="result" className="flex flex-col items-center">
         {/* {" "}
         <p className="text-calcl text-2xl text-center p-6 pt-11">
           Nejdříve spočítejte volný čas a poté zde uvidíte výsledky
@@ -27,7 +27,7 @@ function ResultContent({ children }: { children: React.ReactNode }) {
 
   if (formData.general.free_time_difference < 0)
     return (
-      <div className="border-black p-2 m-1 rounded-xl border-4">
+      <div id="result" className="border-black p-2 m-1 rounded-xl border-4">
         <p className="text-black text-4xl font-extrabold text-center m-2 pt-11">
           SUMA SUMÁRUM
         </p>
@@ -53,7 +53,10 @@ function ResultContent({ children }: { children: React.ReactNode }) {
   const rounded_extra_working_days = Math.ceil(extra_working_days);
 
   return (
-    <div className="bg-slate-300 md:max-w-screen-lg border-black p-2 m-1 rounded-xl border-4">
+    <div
+      id="result"
+      className="bg-slate-300 md:max-w-screen-lg border-black p-2 m-1 rounded-xl border-4"
+    >
       <p className="text-black text-4xl font-extrabold text-center m-2 pt-11">
         SUMA SUMÁRUM
       </p>
@@ -98,8 +101,8 @@ function ResultContent({ children }: { children: React.ReactNode }) {
             </p>
           </div>
         </div>
-        
-      </article><CounterResult />
+      </article>
+      <CounterResult />
     </div>
   );
 }
