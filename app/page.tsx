@@ -4,7 +4,7 @@ import Home from './components/sections/Home';
 function Page() {
   
   return (
-    <main className="text-left">
+    <main className="">
       <Home />
     </main>
   );

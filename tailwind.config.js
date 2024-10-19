@@ -12,7 +12,7 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         watch: "url('../app/images/watch.webp')",
-        home_down: "url('../app/images/home_down.jpg')",
+        nature: "url('../app/images/nature.jpg')",
       },
       colors: {
         calcl: "#4DCBF3",

@@ -7,40 +7,36 @@ import Link from "next/link";
 import { AiOutlineDown } from "react-icons/ai";
 
 function HomepageGoogleForms() {
-
   const { setFormData } = useContext(CounterContext);
-    const [menu, setMenu] = useState<boolean>(false);
-    const menuRef = useRef<HTMLUListElement | null>(null);
+  const [menu, setMenu] = useState<boolean>(false);
+  const menuRef = useRef<HTMLUListElement | null>(null);
 
-    useEffect(() => {
-      const handleClickOutside = (event: MouseEvent | TouchEvent) => {
-        if (
-          menuRef.current &&
-          !menuRef.current.contains(event.target as Node) &&
-          menu
-        ) {
-          setMenu(false);
-        }
-      };
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        menu
+      ) {
+        setMenu(false);
+      }
+    };
 
-      document.addEventListener("click", handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
 
-      return () => {
-        document.removeEventListener("click", handleClickOutside);
-      };
-    }, [menu]);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [menu]);
 
-
-  const handleSelect =  (value: string) => {
-
-       setFormData((prevData: FormData) => ({
-         ...prevData,
-         general: {
-           ...prevData.general,
-           detail_level: value,
-         },
-       }))
-
+  const handleSelect = (value: string) => {
+    setFormData((prevData: FormData) => ({
+      ...prevData,
+      general: {
+        ...prevData.general,
+        detail_level: value,
+      },
+    }));
   };
 
   return (
@@ -53,7 +49,7 @@ function HomepageGoogleForms() {
         label="KDE BYDLÍM TEĎ"
         className="flex flex-col items-center bg-white w-full"
         classNameInputDiv="flex flex-col w-full"
-        classNameInput="bg-calcd border-4 border-black w-full rounded-xl text-center font-bold p-2 mb-2 shadow-xl w-full h-12"
+        classNameInput="bg-calcl border-4 border-black w-full rounded-xl text-center font-bold p-2 mb-2 shadow-xl w-full h-12"
         type="text"
         placeholder=""
         required
@@ -66,7 +62,7 @@ function HomepageGoogleForms() {
         label="KAM SE CHCI STĚHOVAT"
         className="flex flex-col items-center bg-white w-full"
         classNameInputDiv="flex flex-col w-full"
-        classNameInput="bg-calcd border-4 border-black w-full rounded-xl text-center font-bold p-2 mb-2 shadow-xl w-full h-12"
+        classNameInput="bg-calcl border-4 border-black w-full rounded-xl text-center font-bold p-2 mb-2 shadow-xl w-full h-12"
         type="text"
         placeholder=""
         required
@@ -107,22 +103,22 @@ function HomepageGoogleForms() {
           onMouseLeave={() => setMenu(!menu)}
           className="grid gap-4 grid-rows-2 grid-cols-1 sm:grid-cols-2 sm:grid-rows-1 rounded-md p-2 justify-center bg-black absolute top-full left-0"
         >
-          <Link href="/calculator" onClick={() => handleSelect("detailed")}>
-            <div className="p-2 cursor-pointer justify-items-center border-4 border-white rounded-md bg-black w-auto h-full">
-              <h1 className="text-calcd font-bold text-center">PODROBNĚ</h1>
-              <p className="text-white text-center hyphens-auto">
-                dle jednotlivých pracovních dní v týdnu
-              </p>
-            </div>
-          </Link>
           <Link href="/calculator" onClick={() => handleSelect("quick")}>
             <div className="p-2 cursor-pointer justify-items-center border-4 border-white rounded-md bg-black w-auto h-full">
-              <h1 className="text-calcd font-bold text-center">ORIENTAČNĚ</h1>
+              <h1 className="text-calcl font-bold text-center">ORIENTAČNĚ</h1>
               <p className="text-white text-center">
                 dle jednoho průměrného pracovního dne
               </p>
             </div>
           </Link>
+          {/* <Link href="/calculator" onClick={() => handleSelect("detailed")}> */}
+          <div className="p-2 justify-items-center border-4 border-white rounded-md bg-slate-600 w-auto h-full">
+            <h1 className="text-slate-700 font-bold text-center">PODROBNĚ</h1>
+            <p className="text-slate-500 text-center hyphens-auto">
+              připravuje se
+            </p>
+          </div>
+          {/* </Link> */}
         </ul>
       )}
     </div>

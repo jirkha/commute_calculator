@@ -27,10 +27,7 @@ export default function CommuteCounter() {
 
   return (
     <section id="commute_counter" className="flex justify-center p-2">
-      <form
-        className="flex flex-col w-full md:w-3/4 lg:w-1/2"
-        onSubmit={handleFormSubmit}
-      >
+      <form className="flex flex-col w-full " onSubmit={handleFormSubmit}>
         {/* <div className="flex flex-col md:flex-row md:gap-8 ">
           <div>
             <CommuteGoogleForms name="current" />
@@ -48,29 +45,27 @@ export default function CommuteCounter() {
             <CommuteForms />
             <button
               type="submit"
-              className="text-center w-full h-14 px-4 my-8 text-2xl font-bold rounded-xl border-4 border-calcd text-calcd hover:text-black hover:bg-calcd"
+              className="bg-black text-center w-full h-14 px-4 my-8 text-2xl font-bold rounded-xl border-4 border-black text-white"
             >
               SUMA SUMÁRUM
             </button>
           </>
         ) : formData.general.detail_level === "detailed" ? (
-          <>
-            <p className="text-calcl text-2xl text-center p-6 pt-11">
+          <div className=" bg-calcd rounded-3xl md:m-8">
+            <p className="text-black text-2xl md:text-4xl text-center p-2">
               Omlouváme se, ale podrobný výpočet zatím není k dispozici.
             </p>
-            <p className="text-calcl text-2xl text-center p-6">
+            <p className="text-black text-xl md:text-3xl text-center p-2">
               Zvolte prosím ORIENTANČÍ VÝPOČET.
             </p>
-          </>
+          </div>
         ) : (
-          <p className="text-calcl text-2xl text-center p-6 pt-11">
+          <p className="text-black text-2xl text-center p-6 pt-11">
             Nejprve prosím vyberte variantu výpočtu
           </p>
         )}
 
         {/* </div> */}
-
-        <CounterResult />
       </form>
 
       <ToastContainer />

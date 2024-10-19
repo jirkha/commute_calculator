@@ -19,7 +19,7 @@ export interface InputProps {
 export default function Input(props: InputProps) {
   return (
     <div className="flex flex-col items-center max-h-fit z-0">
-      <label className="text-2xl font-semibold text-black z-0">{props.label}</label>
+      <label className="text-2xl font-bold text-black z-0">{props.label}</label>
       <input
         name={props.name}
         type={props.type}

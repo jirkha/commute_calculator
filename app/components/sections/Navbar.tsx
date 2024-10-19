@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "@/app/images/logo_blakck_white.png";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import About from "../content/About";
 
 const items: { label: string; page: string }[] = [
   {
@@ -47,17 +48,38 @@ function Navbar() {
   return (
     <div>
       <header>
-        <nav className="flex items-center justify-between shadow mx-auto w-full bg-black">
+        <nav className="flex flew-wrap flex-col md:flex-row justify-end md:justify-end m-8 mb-4 w-full bg-white">
+          <div className="basis-1/2 flex flex-row items-center">
+            <Image
+              className="w-1/4 max-w-[70px]"
+              src={logo}
+              alt="Logo of the App"
+              priority
+            />
+            <a
+              href="/"
+              className="text-4xl min-[320px]:text-3xl sm:text-5xl text-black font-bold"
+            >
+              SUMA SUMÁRUM
+            </a>
+          </div>
+
+          <div className="basis-1/2">
+            <About />
+          </div>
+        </nav>
+
+        {/* <nav className="flex items-center justify-between shadow mx-auto w-full bg-white">
           <div className="flex flex-row items-center">
             <Image
-              className="w-1/4 max-w-[80px]"
+              className="w-1/4 max-w-[70px]"
               src={logo}
               alt="Logo of the App"
               priority
             ></Image>
             <a
               href="/"
-              className="text-2xl min-[320px]:text-4xl sm:text-6xl text-white font-bold"
+              className="text-2xl min-[320px]:text-4xl sm:text-5xl text-black font-bold"
             >
               SUMA SUMÁRUM
             </a>
@@ -72,8 +94,9 @@ function Navbar() {
               <AiOutlineMenu color="white" size={40} />
             )}
           </div>
-        </nav>
-        {navbar && (
+          <About />
+        </nav> */}
+        {/* {navbar && (
           <ul
             ref={navbarRef}
             className="flex flex-col justify-center items-center bg-black p-12
@@ -94,7 +117,7 @@ function Navbar() {
               </li>
             ))}
           </ul>
-        )}
+        )} */}
       </header>
     </div>
   );

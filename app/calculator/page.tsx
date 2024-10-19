@@ -5,7 +5,7 @@ import Result from "../components/sections/Result";
 
 function Calculator() {
   return (
-    <main className="bg-black p-2">´
+    <main className="flex flex-col bg-white p-2 items-center">
       <RadioLevel />
       <CommuteCounter />
       <Result />

@@ -53,17 +53,17 @@ function CommuteForms() {
   };
 
   // *** INPUTS GOOGLE *** //
-  const className = "flex flex-col items-center bg-black w-full";
+  const className = "flex flex-col items-center bg-white w-full";
   const classNameInputDivGoogle = "flex flex-col w-full";
   const classNameInputGoogle =
-    "bg-black hover:bg-slate-800 w-full rounded-xl border-4 border-calcl text-calcd text-center p-2 mb-2 shadow-xl w-full h-14";
+    "bg-calcl hover:bg-calcl/50 w-full rounded-xl border-4 border-black text-black text-center p-2 mb-2 shadow-xl w-full h-14";
 
   // *** INPUTS *** //
   const classNameInput =
-    "bg-black hover:bg-slate-800 md:px-16 py-2 m-2 text-calcd max-h-fit z-0";
+    "bg-calcl hover:bg-calcl/50 md:px-16 py-2 m-2 text-black max-h-fit z-0";
 
   const classNameInputDiv =
-    "flex justify-center w-full rounded-xl border-4 border-calcl mb-2 h-14 shadow-xl h-20 sm:h-16 z-10";
+    "bg-calcl hover:bg-calcl/50 flex justify-center w-full rounded-xl border-4 border-black mb-2 h-14 shadow-xl h-20 sm:h-16 z-10";
   return (
     <>
       <div className="flex flex-col w-full">
@@ -114,7 +114,7 @@ function CommuteForms() {
         </div>
 
         <div className={className}>
-          <p className="text-2xl font-semibold text-calcd pt-4">
+          <p className="text-2xl font-bold text-black pt-4">
             ZAČÁTEK A KONEC PRÁCE
           </p>
           <div className={classNameInputDiv}>
@@ -133,7 +133,7 @@ function CommuteForms() {
           </div>
         </div>
         <div className={className}>
-          <p className="text-2xl font-semibold text-calcd pt-4">
+          <p className="text-2xl font-bold text-black pt-4">
             ČAS VEČERKY A BUDÍČKU
           </p>
           <div className={classNameInputDiv}>

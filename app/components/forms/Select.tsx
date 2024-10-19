@@ -36,7 +36,7 @@ function Select(props: InputGoogleProps) {
     <div className="relative w-full">
       <select
         name="transport"
-        className="text-center bg-black hover:bg-slate-800 w-full h-14 px-4 text-xl font-semibold rounded-xl border-4 border-calcl text-calcd mb-2 appearance-none pr-8" // Přidán padding vpravo pro místo pro ikonu
+        className="text-center bg-calcl hover:bg-calcl/50 w-full h-14 px-4 text-xl font-bold rounded-xl border-4 border-black text-black mb-2 appearance-none pr-16" 
         onChange={(e) => handleSelectChange(e.target.value)}
         ref={selectRef}
         defaultValue=""
@@ -53,7 +53,7 @@ function Select(props: InputGoogleProps) {
       {/* Ikona pro rozbalení */}
       <div className="absolute inset-y-0 right-2 flex items-center justify-center pointer-events-none">
         <svg
-          className="w-12 h-12 text-calcd"
+          className="w-16 h-16 text-black"
           fill="currentColor" // Změněno na 'currentColor' pro plné vybarvení
           viewBox="0 0 24 24"
           aria-hidden="true"

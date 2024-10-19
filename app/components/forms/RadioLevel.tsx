@@ -17,47 +17,12 @@ function RadioLevel() {
   };
 
   const active =
-    "p-4 text-5xl font-bold text-center text-calcd hover:text-red-600 cursor-pointer";
+    "p-1 md:p-4 text-2xl md:text-4xl font-bold text-center text-black hover:text-red-600 cursor-pointer";
   const not =
-    "p-4 text-5xl font-bold text-center text-gray-600 hover:text-gray-500 cursor-pointer";
+    "p-1 md:p-4 text-xl md:text-3xl font-bold text-center text-gray-500 hover:text-gray-400 cursor-pointer";
 
   return (
-    <div>
-      {/* <form>
-        <fieldset className="p-2 rounded-md border-2 border-black bg-calcl roun">
-          <legend className="mx-2 pt-6 text-xl font-bold">
-            Způsob výpočtu volného času
-          </legend>
-          <div>
-            <input
-              type="radio"
-              id="choice1"
-              name="level"
-              value="quick"
-              onChange={(e) => handleSelectChange(e.target.value)}
-              defaultChecked={formData.general.detail_level === "quick"}
-            />
-            <label htmlFor="choice1" className="mx-2 text-xl">
-              Orientačně
-            </label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              id="choice2"
-              name="level"
-              value="detailed"
-              onChange={(e) => handleSelectChange(e.target.value)}
-              defaultChecked={formData.general.detail_level === "detailed"}
-              disabled
-            />
-            <label htmlFor="choice2" className="mx-2 text-xl">
-              Podrobně
-            </label>
-          </div>
-        </fieldset>
-      </form> */}
-      <div className="flex flex-wrap px-1 lg:px-24 items-center justify-center">
+      <div className="flex flex-wrap w-full md:w-9/12 items-center justify-center  bg-slate-300 p-2 md:p-4 border-4 border-black rounded-3xl">
         <div></div>
         <div
           className={formData.general.detail_level === "quick" ? active : not}
@@ -75,7 +40,6 @@ function RadioLevel() {
         </div>
         <div></div>
       </div>
-    </div>
   );
 }
 

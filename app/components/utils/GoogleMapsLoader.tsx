@@ -21,7 +21,7 @@ const GoogleMapsLoader: React.FC<Props> = ({ children }) => {
   
   if (googleMapsApiKey === undefined) {
         return (
-          <div className="flex flex-col justify-center place-items-center bg-black mt-12">
+          <div className="flex flex-col justify-center place-items-center bg-black mt-12 border-4">
             <h1 className="text-calcd text-4xl">
               Omlouváme se, ale vyskytla se chyba na straně Google Maps API
             </h1>
@@ -32,7 +32,7 @@ const GoogleMapsLoader: React.FC<Props> = ({ children }) => {
 
   if (loadError) {
     return (
-      <div className="flex flex-col justify-center place-items-center bg-black mt-12">
+      <div className="flex flex-col justify-center place-items-center bg-black mt-12" border-4>
         <h1 className="text-calcd text-4xl">
           Omlouváme se, ale vyskytla se chyba na straně Google Maps API
         </h1>
@@ -44,11 +44,11 @@ const GoogleMapsLoader: React.FC<Props> = ({ children }) => {
   return isLoaded ? (
     <>{children}</>
   ) : (
-    <div className="flex flex-col justify-center place-items-center bg-white mt-12">
-      <h1 className="text-calcd text-4xl">
+    <div className="flex flex-col justify-center place-items-center">
+      <h1 className="text-calcl text-6xl text-center">
         Chvilku strpení prosím, načítá se prostředí Google API ...
       </h1>
-      <SiGooglestreetview color="#EB5671" size={70} />
+      <SiGooglestreetview color="#4DCBF3" size={80} />
     </div>
   );
 };
