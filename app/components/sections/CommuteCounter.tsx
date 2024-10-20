@@ -24,11 +24,11 @@ export default function CommuteCounter() {
         block: "start",
         inline: "start",
       });
-    }, 200); // 500 ms = půl sekundy
+    }, 200);
   };
 
   return (
-    <section id="commute_counter" className="flex justify-center p-2">
+    <section id="commute_counter" className="flex justify-center p-2  md:w-1/2">
       <form className="flex flex-col w-full " onSubmit={handleFormSubmit}>
         {/* <div className="flex flex-col md:flex-row md:gap-8 ">
           <div>

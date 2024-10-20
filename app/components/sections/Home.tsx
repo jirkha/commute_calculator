@@ -9,11 +9,12 @@ export default function Home() {
       <article className="flex flex-col bg-slate-500 m-4 p-2 md:p-4 rounded-3xl">
         {" "}
         <p className="text-md md:text-xl text-white text-center md:font-bold md:tracking-wide">
-          Volný čas je pro každého z nás důležitý. Byla by velká škoda
-          se o něj nechat připravit.
+          Na této stránce si můžete ověřit, jaký vliv bude mít změna doby
+          dojíždění po přestěhování na množství vašeho volného času.
         </p>
         <p className="text-md md:text-xl text-white text-center md:font-bold md:tracking-wide">
-          Tato stránka byla vytvořena proto, abyste si před přestěhováním mohli ověřit, jak ovlivní váš volný čas.
+          Volný čas je pro každého z nás důležitý. Byla by velká škoda se o něj
+          nechat připravit.
         </p>
       </article>
       <div

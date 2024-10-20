@@ -60,7 +60,7 @@ function CommuteForms() {
 
   // *** INPUTS *** //
   const classNameInput =
-    "bg-calcl hover:bg-calcl/50 md:px-16 py-2 m-2 text-black max-h-fit z-0";
+    "bg-calcl border-2 border-black hover:bg-calcl/50 md:px-2 py-2 m-2 text-black max-h-fit z-0";
 
   const classNameInputDiv =
     "bg-calcl hover:bg-calcl/50 flex justify-center w-full rounded-xl border-4 border-black mb-2 h-14 shadow-xl h-20 sm:h-16 z-10";
@@ -114,8 +114,8 @@ function CommuteForms() {
         </div>
 
         <div className={className}>
-          <p className="text-2xl font-bold text-black pt-4">
-            ZAČÁTEK A KONEC PRÁCE
+          <p className="text-xl text-black pt-4">
+            <strong className="text-2xl">ZAČÁTEK A KONEC PRÁCE</strong> [HH:MM]
           </p>
           <div className={classNameInputDiv}>
             <Input
@@ -124,6 +124,7 @@ function CommuteForms() {
               placeholder="hh"
               name="start_work"
             />
+            <p className="text-2xl text-black pt-3">-</p>
             <Input
               classNameInput={classNameInput}
               type="time"
@@ -133,8 +134,8 @@ function CommuteForms() {
           </div>
         </div>
         <div className={className}>
-          <p className="text-2xl font-bold text-black pt-4">
-            ČAS VEČERKY A BUDÍČKU
+          <p className="text-xl text-black pt-4">
+            <strong className="text-2xl">ČAS VEČERKY A BUDÍČKU</strong> [HH:MM]
           </p>
           <div className={classNameInputDiv}>
             <Input
@@ -143,6 +144,7 @@ function CommuteForms() {
               placeholder="hh"
               name="sleep_time"
             />
+            <p className="text-2xl text-black pt-3">-</p>
             <Input
               classNameInput={classNameInput}
               type="time"
