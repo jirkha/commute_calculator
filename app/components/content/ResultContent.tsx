@@ -44,7 +44,10 @@ function ResultContent({ children }: { children: React.ReactNode }) {
 
   const working_day_hours = formData.current.times.work_duration / 60;
   const rounded_working_day_hours = working_day_hours.toFixed(1);
+  const rounded_freetime_day_minutes =
+    formData.general.free_time_difference.toFixed(0);
   const freetime_day_hours = formData.general.free_time_difference / 60;
+  const rounded_freetime_day_hours = freetime_day_hours.toFixed(1);
   const freetime_month_hours = freetime_day_hours * 30;
   const rounded_freetime_month_hours = Math.round(freetime_month_hours);
   const freetime_year_hours = freetime_month_hours * 12;
@@ -60,7 +63,28 @@ function ResultContent({ children }: { children: React.ReactNode }) {
       <p className="text-black text-4xl font-extrabold text-center m-2 pt-11">
         SUMA SUMÁRUM
       </p>
-      <article className="flex flex-wrap justify-center items-center border-black p-2 rounded-xl border-4 mb-4">
+      <article className="flex flex-wrap bg-slate-100 justify-center items-center border-black p-2 rounded-xl border-4 mb-4">
+        <div className="polygon-container m-2">
+          <div className="polygon flex flex-wrap justify-center items-center p-1">
+            <p className="text-center font-bold text-[96px]">
+              {rounded_freetime_day_hours}
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-col w-full md:w-1/2 lg:w-7/12 m-2">
+          <div className="bg-calcl rounded-md m-2 p-1">
+            <p className="text-center font-bold text-xl">DENNĚ</p>
+          </div>
+          <div className="bg-calcl rounded-md m-2 p-1">
+            <p className="text-center font-bold">
+              Každý pracovní den strávíte na cestě přibližně o{" "}
+              {rounded_freetime_day_hours} hodin(y) více. Jinak je to také{" "}
+              {rounded_freetime_day_minutes} minut.
+            </p>
+          </div>
+        </div>
+      </article>
+      <article className="flex flex-wrap bg-slate-100 justify-center items-center border-black p-2 rounded-xl border-4 mb-4">
         <div className="polygon-container m-2">
           <div className="polygon flex flex-wrap justify-center items-center p-1">
             <p className="text-center font-bold text-[96px]">
@@ -82,7 +106,7 @@ function ResultContent({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       </article>
-      <article className="flex flex-wrap justify-center items-center border-black p-2 rounded-xl border-4">
+      <article className="flex flex-wrap bg-slate-100 justify-center items-center border-black p-2 rounded-xl border-4">
         <div className="polygon-container m-2">
           <div className="polygon flex flex-wrap justify-center items-center p-1">
             <p className="text-center font-bold text-[96px]">

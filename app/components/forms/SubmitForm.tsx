@@ -110,28 +110,24 @@ export const submitForm = async (
 
       // Převod minut zpět na hodiny a minuty ve formátu hh:mm
       let resultHours = Math.floor(current_travel_time / 60);
-      let resultMinutesFormatted = current_travel_time % 60;
+      let resultMinutesFormatted = Math.round(current_travel_time % 60);
 
       // Sestavení výsledného času ve formátu hh:mm
       const travel_time_current = `${resultHours
         .toString()
-        .padStart(2, "0")
-        .slice(0, 5)}:${resultMinutesFormatted
+        .padStart(2, "0")}:${resultMinutesFormatted
         .toString()
-        .padStart(2, "0")
-        .slice(0, 2)}`;
+        .padStart(2, "0")}`;
 
       resultHours = Math.floor(planned_travel_time / 60);
-      resultMinutesFormatted = planned_travel_time % 60;
+      resultMinutesFormatted = Math.round(planned_travel_time % 60);
 
       // Sestavení výsledného času ve formátu hh:mm
       const travel_time_planned = `${resultHours
         .toString()
-        .padStart(2, "0")
-        .slice(0, 5)}:${resultMinutesFormatted
+        .padStart(2, "0")}:${resultMinutesFormatted
         .toString()
-        .padStart(2, "0")
-        .slice(0, 2)}`;
+        .padStart(2, "0")}`;
 
       updatedFormData.current.connections.total_time = travel_time_current;
       updatedFormData.planned.connections.total_time = travel_time_planned;
