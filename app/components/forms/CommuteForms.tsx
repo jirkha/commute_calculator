@@ -60,7 +60,7 @@ function CommuteForms() {
 
   // *** INPUTS *** //
   const classNameInput =
-    "bg-calcl border-2 border-black hover:bg-calcl/50 md:px-2 py-2 m-2 text-black max-h-fit z-0";
+    "bg-calcl border-2 border-gray-600 hover:bg-calcl/50 md:px-2 py-2 m-2 text-black max-h-fit z-0";
 
   const classNameInputDiv =
     "bg-calcl hover:bg-calcl/50 flex justify-center w-full rounded-xl border-4 border-black mb-2 h-14 shadow-xl h-20 sm:h-16 z-10";
