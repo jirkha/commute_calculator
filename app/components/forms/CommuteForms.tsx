@@ -123,6 +123,7 @@ function CommuteForms() {
               type="time"
               placeholder="hh"
               name="start_work"
+              required
             />
             <p className="text-2xl text-black pt-3">-</p>
             <Input
@@ -130,6 +131,7 @@ function CommuteForms() {
               type="time"
               placeholder="hh"
               name="end_work"
+              required
             />
           </div>
         </div>
@@ -143,6 +145,7 @@ function CommuteForms() {
               type="time"
               placeholder="hh"
               name="sleep_time"
+              required
             />
             <p className="text-2xl text-black pt-3">-</p>
             <Input
@@ -150,6 +153,7 @@ function CommuteForms() {
               type="time"
               placeholder="hh"
               name="wakeup_time"
+              required
             />
           </div>
         </div>
