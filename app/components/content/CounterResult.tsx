@@ -5,7 +5,10 @@ function CounterResult() {
   const { formData, setFormData } = useContext(CounterContext);
   //console.log("formData", formData);
   return (
-    <div className=" border-yellow-100 p-2 rounded-xl border-4">
+    <div className="border-2 border-yellow-100 p-2">
+      <p className="text-2xl font-bold text-yellow-100 underline underline-offset-2">
+        PRO ZKUŠEBNÍ ÚČELY
+      </p>
       <h1 className="text-xl text-yellow-100 underline underline-offset-2">
         Současný stav
       </h1>

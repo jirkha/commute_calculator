@@ -33,37 +33,22 @@ function Select(props: InputGoogleProps) {
    }, []); 
 
   return (
-    <div className="relative w-full">
-      <select
-        name="transport"
-        className="text-center bg-black hover:bg-slate-800 w-full h-14 px-4 text-xl font-semibold rounded-xl border-4 border-calcl text-calcd mb-2 appearance-none pr-8" // Přidán padding vpravo pro místo pro ikonu
-        onChange={(e) => handleSelectChange(e.target.value)}
-        ref={selectRef}
-        defaultValue=""
-        required
-      >
-        <option value="">
-          {kind === "current"
-            ? "JAK JEZDÍM DO PRÁCE"
-            : "JAK BUDU JEZDIT DO PRÁCE"}
-        </option>
-        <option value="TRANSIT">Veřejná doprava</option>
-        <option value="DRIVING">Automobil</option>
-      </select>
-      {/* Ikona pro rozbalení */}
-      <div className="absolute inset-y-0 right-2 flex items-center justify-center pointer-events-none">
-        <svg
-          className="w-12 h-12 text-calcd"
-          fill="currentColor" // Změněno na 'currentColor' pro plné vybarvení
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path
-            d="M7 10l5 5 5-5H7z" // Smazána stroke a strokeWidth, aby se použil pouze fill
-          />
-        </svg>
-      </div>
-    </div>
+    <select
+      name="transport"
+      className="text-center bg-black hover:bg-slate-800 w-full h-14 px-4 text-xl font-semibold rounded-xl border-4 border-calcl text-calcd mb-2"
+      onChange={(e) => handleSelectChange(e.target.value)}
+      ref={selectRef}
+      defaultValue=""
+      required
+    >
+      <option value="" className="">
+        {kind === "current"
+          ? "JAK JEZDÍM DO PRÁCE"
+          : "JAK BUDU JEZDIT DO PRÁCE"}
+      </option>
+      <option value="TRANSIT">Veřejná doprava</option>
+      <option value="DRIVING">Automobil</option>
+    </select>
   );
 }
 
