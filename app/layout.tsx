@@ -13,8 +13,15 @@ const cairo = Cairo({
 export const metadata: Metadata = {
   title: "SUMA SUMÁRUM | Kalkulačka volného času",
   description: "Aplikace složící k výpočtu volného času po přestěhování",
-  icons: { 
-    icon: '/favicon.svg',},
+  openGraph: {
+    title: "SUMA SUMÁRUM | Kalkulačka volného času",
+    description: "Spočítejte si, kolik času ušetříte!",
+    images: ["https://sumasumarum.vercel.app/logo.png"],
+    url: "https://sumasumarum.vercel.app",
+  },
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
