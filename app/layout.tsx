@@ -1,23 +1,21 @@
 import { CounterContextProvider } from "./components/contexts/CounterContext";
 import Navbar from "./components/sections/Navbar";
 import GoogleMapsLoader from "./components/utils/GoogleMapsLoader";
+import type { Metadata } from "next";
 import "./globals.css";
-import {Cairo} from "next/font/google";
+import { Cairo } from "next/font/google";
 
 const cairo = Cairo({
   subsets: ["latin"],
-  display: "swap"
+  display: "swap",
 });
 
-// type Metadata = {
-//   title: string;
-//   description: string;
-// };
-
-//  export const metadata: Metadata = {
-//    title: "Kalkulačka dojíždění",
-//    description: "Aplikace složící k výpočtu volného času",
-//  };
+export const metadata: Metadata = {
+  title: "SUMA SUMÁRUM | Kalkulačka volného času",
+  description: "Aplikace složící k výpočtu volného času po přestěhování",
+  icons: { 
+    icon: '/favicon.svg',},
+};
 
 export default function RootLayout({
   children,
@@ -26,12 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={cairo.className}>
-      <head>
-        <link rel="shortcut icon" href="/logo_transp.ico" type="image/x-icon" />
-        <title>SUMA SUMÁRUM</title>
-      </head>
       <body
-        //style={cairo.style}
         className="min-h-full w-full bg-white"
       >
         <Navbar />
@@ -42,5 +35,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-// export { metadata };
