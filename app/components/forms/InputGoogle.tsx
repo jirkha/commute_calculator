@@ -1,7 +1,7 @@
 "use client";
 import React, { useContext, useState } from "react";
 import { Autocomplete } from "@react-google-maps/api";
-import Input, { InputProps } from "./Input";
+import Input from "./Input";
 import { CounterContext } from "../contexts/CounterContext";
 import Select from "./Select";
 
@@ -30,7 +30,6 @@ export default function InputGoogle(props: InputGoogleProps) {
   const kind = props.kind === "current" ? "current" : "planned";
   const point = props.point;
   const className = props.className;
-  const classNameInput = props.classNameInput;
 
   const handleAutocompleteLoad = (
     autocomplete: google.maps.places.Autocomplete
@@ -67,8 +66,8 @@ export default function InputGoogle(props: InputGoogleProps) {
         },
       });
 
+      // automatically set the workplace for current and planned points
       if (
-        //formData.planned.points.workplace === "" &&
         props.kind === "current" &&
         props.point === "workplace"
       ) {
@@ -89,7 +88,6 @@ export default function InputGoogle(props: InputGoogleProps) {
             },
           },
         });
-        console.log("second")
       }
     }
   };

@@ -111,14 +111,12 @@ function HomepageGoogleForms() {
               </p>
             </div>
           </Link>
-          {/* <Link href="/calculator" onClick={() => handleSelect("detailed")}> */}
           <div className="p-2 justify-items-center border-4 border-white rounded-md bg-slate-600 w-auto h-full">
             <h1 className="text-slate-700 font-bold text-center">PODROBNĚ</h1>
             <p className="text-slate-500 text-center hyphens-auto">
               připravuje se
             </p>
           </div>
-          {/* </Link> */}
         </ul>
       )}
     </div>

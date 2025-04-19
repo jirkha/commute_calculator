@@ -1,11 +1,10 @@
 import HomepageGoogleForms from "../forms/HomepageGoogleForms";
 import Image from "next/image";
-import logo from "@/app/images/home_image.png";
-import About from "../content/About";
+import logo from "@/app/images/home_image.jpg";
 
 export default function Home() {
   return (
-    <div className="bg-white bg-scroll bg-center bg-cover bg-no-repeat">
+    <div className="bg-white bg-scroll bg-center bg-cover bg-no-repeat mb-8">
       <article className="flex flex-col bg-slate-500 m-4 p-2 md:p-4 rounded-3xl">
         {" "}
         <p className="text-md md:text-xl text-white text-center md:font-bold md:tracking-wide">
@@ -25,8 +24,8 @@ export default function Home() {
           <Image
             src={logo}
             alt="Ilustrační obrázek"
-            layout="responsive" // přizpůsobí se šířce obrazovky
-            priority // optimalizuje pro rychlé načtení na hlavní stránce
+            layout="responsive"
+            priority
           />
         </article>
         <article className="flex flex-col m-4 w-full max-w-2xl gap-8 bg-slate-200 border-4 rounded-3xl border-black p-4">

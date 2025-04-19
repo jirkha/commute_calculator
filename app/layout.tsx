@@ -30,10 +30,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={cairo.className}>
-      <body
-        className="min-h-full w-full bg-white"
-      >
+    <html lang="cs" className={cairo.className}>
+      <body className="min-h-full max-w-[1280px] mx-auto bg-white">
         <Navbar />
         <CounterContextProvider>
           <GoogleMapsLoader>{children}</GoogleMapsLoader>
