@@ -22,7 +22,7 @@ function RadioLevel() {
     "p-1 md:p-4 text-xl md:text-3xl font-bold text-center text-gray-500 hover:text-gray-400 cursor-pointer";
 
   return (
-      <div className="flex flex-wrap w-full md:w-9/12 items-center justify-center  bg-slate-300 p-2 md:p-4 border-4 border-black rounded-3xl">
+      <div className="flex flex-wrap w-full md:w-9/12 items-center justify-center  bg-slate-300 mb-1 md:mb-3 border-4 border-black rounded-3xl">
         <div></div>
         <div
           className={formData.general.detail_level === "quick" ? active : not}

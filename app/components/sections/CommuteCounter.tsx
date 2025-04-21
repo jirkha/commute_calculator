@@ -4,7 +4,7 @@ import { submitForm } from "../forms/SubmitForm";
 import CommuteGoogleForms from "../forms/CommuteGoogleForms";
 import CounterResult from "../content/CounterResult";
 import CommuteForms from "../forms/CommuteForms";
-// import GoogleMap from "../content/GoogleMap";
+import GoogleMap from "../content/GoogleMap";
 import { CounterContext } from "../contexts/CounterContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -30,11 +30,11 @@ export default function CommuteCounter() {
   return (
     <section id="commute_counter" className="flex justify-center p-2  md:w-1/2">
       <form className="flex flex-col w-full " onSubmit={handleFormSubmit}>
-        {/* <div className="flex flex-col md:flex-row md:gap-8 ">
-          <div>
+        <div className="flex flex-col md:flex-row md:gap-8 ">
+
             <GoogleMap />
-          </div>
-        </div> */}
+
+        </div>
         {/* <div className="flex flex-col md:flex-row md:gap-8 "> */}
         {formData.general.detail_level === "quick" ? (
           <>

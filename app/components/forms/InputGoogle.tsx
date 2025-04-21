@@ -42,16 +42,15 @@ export default function InputGoogle(props: InputGoogleProps) {
       const place = autocomplete.getPlace();
       const inputValue = place.formatted_address;
       setInputValue(inputValue || "");
-      setFormData({
+
+      const updatedFormData = {
         ...formData,
         [kind]: {
           ...formData[kind],
           points: {
             ...formData[kind].points,
             ...(props.point !== "other"
-              ? {
-                  [props.point]: place,
-                }
+              ? { [props.point]: place }
               : {
                   other: {
                     ...formData[kind].points.other,
@@ -64,32 +63,16 @@ export default function InputGoogle(props: InputGoogleProps) {
           ...formData.general,
           actual_point: place.geometry?.location,
         },
-      });
+      };
 
-      // automatically set the workplace for current and planned points
-      if (
-        props.kind === "current" &&
-        props.point === "workplace"
-      ) {
-        setFormData({
-          ...formData,
-          current: {
-            ...formData.current,
-            points: {
-              ...formData.current.points,
-              workplace: place,
-            },
-          },
-          planned: {
-            ...formData.planned,
-            points: {
-              ...formData.planned.points,
-              workplace: place,
-            },
-          },
-        });
+      // Pokud je workplace, nastav i do planned
+      if (props.kind === "current" && props.point === "workplace") {
+        updatedFormData.planned.points.workplace = place;
       }
+
+      setFormData(updatedFormData);
     }
+
   };
 
   const handleInputClick = () => {

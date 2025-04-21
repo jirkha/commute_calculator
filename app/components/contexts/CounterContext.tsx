@@ -116,11 +116,12 @@ export const CounterContext = createContext<CounterContextType>({
   setFormData: () => {},
 });
 
+
 export const CounterContextProvider = ({
   children,
 }: React.PropsWithChildren<{}>) => {
   const [formData, setFormData] = useState<FormData>(defaultFormData);
-
+console.log(formData.general)
   return (
     <CounterContext.Provider value={{ formData, setFormData }}>
       {children}
