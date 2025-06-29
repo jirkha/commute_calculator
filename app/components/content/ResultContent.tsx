@@ -1,11 +1,10 @@
 "use client";
 import React, { useContext } from "react";
 import { CounterContext } from "../contexts/CounterContext";
-import Link from "next/link";
 import "../utils/Polygon.css";
 import CounterResult from "./CounterResult";
 
-function ResultContent({ children }: { children: React.ReactNode }) {
+function ResultContent() {
   const { formData } = useContext(CounterContext);
 
   if (formData.general.result === false)
