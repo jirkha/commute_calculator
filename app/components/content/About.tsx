@@ -36,7 +36,11 @@ function About() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image src={github} alt="GitHub Logo" width={80} />
+            <Image
+              src={github}
+              alt="GitHub Logo"
+              style={{ width: "80px", height: "auto" }}
+            />
           </a>
           <a
             href="https://www.linkedin.com/in/ji%C5%99%C3%AD-vecko-44579b127/"

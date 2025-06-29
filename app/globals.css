@@ -1,3 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+    --color-calcl: #4DCBF3;
+    --color-calcd: #EB5671;
+}
