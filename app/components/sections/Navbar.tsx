@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "@/app/images/logo_blakck_white.png";
+import logo from "@/app/images/logo_black_gray.png";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import About from "../content/About";
 
@@ -48,10 +48,10 @@ function Navbar() {
   return (
     <div>
       <header>
-        <nav className="flex flew-wrap flex-col md:flex-row justify-end md:justify-end m-8 mb-4 w-full bg-white">
-          <div className="basis-1/2 flex flex-row items-center">
+        <nav className="flex flew-wrap flex-col lg:flex-row justify-end md:justify-end m-3 bg-white">
+          <div className="basis-1/2 flex flex-row justify-center items-center border-2 rounded-3xl border-black bg-slate-200">
             <Image
-              className="w-1/4 max-w-[70px]"
+              className="w-1/5 max-w-[90px] p-1.5"
               src={logo}
               alt="Logo of the App"
               priority
@@ -64,7 +64,7 @@ function Navbar() {
             </a>
           </div>
 
-          <div className="basis-1/2">
+          <div className="basis-1/2 lg:pl-12">
             <About />
           </div>
         </nav>

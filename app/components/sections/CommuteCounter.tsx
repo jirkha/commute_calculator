@@ -31,9 +31,7 @@ export default function CommuteCounter() {
     <section id="commute_counter" className="flex justify-center p-2  md:w-1/2">
       <form className="flex flex-col w-full " onSubmit={handleFormSubmit}>
         <div className="flex flex-col md:flex-row md:gap-8 ">
-
-            <GoogleMap />
-
+          <GoogleMap />
         </div>
         {/* <div className="flex flex-col md:flex-row md:gap-8 "> */}
         {formData.general.detail_level === "quick" ? (
@@ -41,7 +39,7 @@ export default function CommuteCounter() {
             <CommuteForms />
             <button
               type="submit"
-              className="bg-black text-center w-full h-14 px-4 my-8 text-2xl font-bold rounded-xl border-4 border-black text-white"
+              className="bg-black text-center w-full h-14 px-4 my-8 text-2xl font-bold rounded-xl border-4 border-black text-white cursor-pointer"
             >
               SUMA SUMÁRUM
             </button>

@@ -40,7 +40,7 @@ function HomepageGoogleForms() {
   };
 
   return (
-    <div className="relative p-4 border-4 border-black rounded-3xl grid gap-5 bg-white items-center">
+    <div className="relative p-4 border-2 border-black rounded-3xl grid gap-3 bg-white items-center">
       <InputGoogle
         id={200}
         name="current.points.residence"
@@ -49,7 +49,7 @@ function HomepageGoogleForms() {
         label="KDE BYDLÍM TEĎ"
         className="flex flex-col items-center bg-white w-full"
         classNameInputDiv="flex flex-col w-full"
-        classNameInput="bg-calcl border-4 border-black w-full rounded-xl text-center font-bold p-2 mb-2 shadow-xl w-full h-12"
+        classNameInput="bg-calcl border-2 border-black w-full rounded-xl text-center font-bold p-2 mb-2 shadow-xl w-full h-12"
         type="text"
         placeholder=""
         required
@@ -62,7 +62,7 @@ function HomepageGoogleForms() {
         label="KAM SE CHCI STĚHOVAT"
         className="flex flex-col items-center bg-white w-full"
         classNameInputDiv="flex flex-col w-full"
-        classNameInput="bg-calcl border-4 border-black w-full rounded-xl text-center font-bold p-2 mb-2 shadow-xl w-full h-12"
+        classNameInput="bg-calcl border-2 border-black w-full rounded-xl text-center font-bold p-2 mb-2 shadow-xl w-full h-12"
         type="text"
         placeholder=""
         required
